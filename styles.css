@@ -10,6 +10,7 @@ body {
 }
 
 .clickable-items__clickable-item {
+  cursor: pointer;
   color: #f1f2f6;
   font-weight: 600;
   display: flex;
@@ -38,4 +39,9 @@ body {
   width: 160px;
   margin-right: 10px;
   margin-top: 50px;
+}
+
+.click {
+  margin-bottom: 2px;
+  cursor: pointer;
 }
