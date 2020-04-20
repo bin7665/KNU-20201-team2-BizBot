@@ -1,0 +1,49 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <!-- Create an element where the map will take place -->
+    <svg id="my_dataviz" width="700" height="700"></svg>
+
+    <script>
+      var margin = 50;
+
+      // The svg
+      var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+
+      // Map and projection
+      var projection = d3
+        .geoAitoff()
+        .rotate([-128, -36])
+        .scale(width * 10)
+        .translate([width / 2, height / 2]);
+
+      // Load external data and boot
+      d3.json(
+        "https://www.amcharts.com/lib/4/geodata/json/southKoreaHigh.json",
+        function (data) {
+          // Draw the map
+          svg
+            .append("g")
+            .selectAll("path")
+            .data(data.features)
+            .enter()
+            .append("path")
+            .attr("fill", "#69b3a2")
+            .attr("d", d3.geoPath().projection(projection))
+            .style("stroke", "#fff");
+        }
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
