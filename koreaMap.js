@@ -2,10 +2,11 @@
 const ranking = document.querySelector(".ranking");
 const wordCloud = document.querySelector(".word-cloud");
 const supportGraph = document.querySelector(".support-graph");
-const s = document.querySelector(".selected");
+const selceted = document.querySelector(".selected");
+const body = document.querySelector("body");
 
-let menu = "전체";
-let item = "지역별 랭킹";
+let area = "전체";
+let category = "지역별 랭킹";
 
 // The svg
 var svg = d3.select("svg"),
@@ -19,10 +20,8 @@ var projection = d3
   .scale(width * 10)
   .translate([width / 2, height / 2]);
 
-function selected(name, show) {
-  menu = name;
-  item = show;
-  s.innerText = `지역: ${menu}, 아이템: ${item}을 보여줍니다.`;
+function showItem() {
+  selceted.innerText = `지역: ${area}, 아이템: ${category}을 보여줍니다.`;
 }
 
 // Load external data and boot
@@ -39,9 +38,10 @@ d3.json(
     };
 
     let mouseClick = function (d) {
+      area = d.properties.name;
       d3.selectAll(".City").attr("fill", "#69b3a2");
       d3.select(this).attr("fill", "#FF3B30");
-      selected(d.properties.name, item);
+      showItem();
     };
 
     // Draw the map
@@ -51,6 +51,7 @@ d3.json(
       .data(data.features)
       .enter()
       .append("path")
+      .attr("id", "koreaMap")
       .attr("class", function (d) {
         return "City";
       })
@@ -65,9 +66,13 @@ d3.json(
 );
 
 function handleClickItem(event) {
-  selected(menu, event.toElement.innerText);
+  if(event.toElement.parentNode.classList.contains("clickable-items__clickable-item"))
+    category = event.toElement.innerText;
+  else if(event.target.id != "koreaMap"){
+    area = "전체";
+    d3.selectAll(".City").attr("fill", "#69b3a2");
+  }
+  showItem();
 }
 
-ranking.addEventListener("click", handleClickItem);
-wordCloud.addEventListener("click", handleClickItem);
-supportGraph.addEventListener("click", handleClickItem);
+body.addEventListener("click", handleClickItem);

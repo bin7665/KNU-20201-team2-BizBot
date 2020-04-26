@@ -50,3 +50,15 @@ main {
 .City {
   cursor: pointer;
 }
+
+.map{
+  position: absolute;
+  left: 180px;
+  top : 150px;
+}
+
+.view{
+  position: absolute;
+  left: 730px;
+  top : 170px;
+}
