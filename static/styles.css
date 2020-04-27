@@ -51,14 +51,14 @@ main {
   cursor: pointer;
 }
 
-.map{
+.map {
   position: absolute;
   left: 180px;
-  top : 150px;
+  top: 150px;
 }
 
-.view{
+.view {
   position: absolute;
-  left: 730px;
-  top : 170px;
+  left: 600px;
+  top: 170px;
 }

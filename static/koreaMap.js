@@ -1,7 +1,4 @@
 // item change objects
-const ranking = document.querySelector(".ranking");
-const wordCloud = document.querySelector(".word-cloud");
-const supportGraph = document.querySelector(".support-graph");
 const selceted = document.querySelector(".selected");
 const body = document.querySelector("body");
 
@@ -53,7 +50,7 @@ d3.json(
       .append("path")
       .attr("id", "koreaMap")
       .attr("class", function (d) {
-        return "City";
+        return `City ${d.properties.name}`;
       })
       .style("opacity", 0.8)
       .attr("fill", "#69b3a2")
@@ -66,9 +63,13 @@ d3.json(
 );
 
 function handleClickItem(event) {
-  if(event.toElement.parentNode.classList.contains("clickable-items__clickable-item"))
+  if (
+    event.toElement.parentNode.classList.contains(
+      "clickable-items__clickable-item"
+    )
+  )
     category = event.toElement.innerText;
-  else if(event.target.id != "koreaMap"){
+  else if (event.target.id != "koreaMap") {
     area = "전체";
     d3.selectAll(".City").attr("fill", "#69b3a2");
   }

@@ -7,9 +7,14 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-    <!-- Load d3.js -->
     <title>BizBot</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- for local import -->
+    <link rel="stylesheet" href="../static/styles.css" />
+    <!-- for server import -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
   </head>
   <body>
     <main>
@@ -32,15 +37,26 @@
         </div>
       </div>
       <!-- Create an element where the map will take place -->
-      <svg class = "map" id="korea-map" width="500" height="500">
-
-      </svg>
-      <section class="view">
+      <svg class="map" id="korea-map" width="500" height="500"></svg>
+      <div class="view">
         <div class="selected">
           지역: 전체, 아이템: 지역별 랭킹을 보여줍니다.
         </div>
-      </section>
-      <script src="koreaMap.js"></script>
+        <!-- plotly visualization -->
+        <iframe
+          id="igraph"
+          scrolling="no"
+          style="border: none;"
+          seamless="seamless"
+          src="../static/temp-plot.html"
+          height="525"
+          width="700px"
+        ></iframe>
+      </div>
     </main>
+    <!-- for local import -->
+    <script src="../static/koreaMap.js"></script>
+    <!-- for server import -->
+    <script src="{{url_for('static',filename='koreaMap.js')}}"></script>
   </body>
 </html>
