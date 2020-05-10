@@ -51,10 +51,10 @@ main {
   cursor: pointer;
 }
 
-.map {
+#map {
   position: absolute;
-  left: 180px;
-  top: 150px;
+  left : 120px;
+  top: 240px;
 }
 
 .view {

@@ -3,10 +3,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!-- Load d3.js -->
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <title>BizBot</title>
     <!-- for local import -->
     <link rel="stylesheet" href="../static/styles.css" />
@@ -37,7 +33,9 @@
         </div>
       </div>
       <!-- Create an element where the map will take place -->
-      <svg class="map" id="korea-map" width="500" height="500"></svg>
+      <div id="map">
+        
+      </div>
       <div class="view">
         <div class="selected">
           지역: 전체, 아이템: 지역별 랭킹을 보여줍니다.
@@ -52,11 +50,20 @@
           height="525"
           width="700px"
         ></iframe>
+        <div id="coronaGraph">
+
+        </div>
+        <iframe src="https://datahub.io/core/covid-19/view/1" width="100%" height="475px" frameborder="0"></iframe>
       </div>
     </main>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <!-- for local import -->
     <script src="../static/koreaMap.js"></script>
     <!-- for server import -->
     <script src="{{url_for('static',filename='koreaMap.js')}}"></script>
+    <script src="coronaGraph.js"></script>
   </body>
 </html>

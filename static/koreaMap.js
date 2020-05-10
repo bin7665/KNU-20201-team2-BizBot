@@ -6,16 +6,16 @@ let area = "전체";
 let category = "지역별 랭킹";
 
 // The svg
-var svg = d3.select("svg"),
-  width = +svg.attr("width"),
-  height = +svg.attr("height");
+//var svg = d3.select("#"),
+var width = 500;//+svg.attr("width"),
+    height = 500;//+svg.attr("height");
 
 // Map and projection
 var projection = d3
   .geoAitoff()
   .rotate([-128, -36])
-  .scale(width * 10)
-  .translate([width / 2, height / 2]);
+  .scale(width*10)
+  .translate([width/2, height/2]);
 
 function showItem() {
   selceted.innerText = `지역: ${area}, 아이템: ${category}을 보여줍니다.`;
@@ -42,19 +42,22 @@ d3.json(
     };
 
     // Draw the map
-    svg
+    var svg = d3.select("#map")
+      .append("svg")
+        .attr("width", width+100)
+        .attr("height", height+100)
       .append("g")
       .selectAll("path")
       .data(data.features)
       .enter()
       .append("path")
-      .attr("id", "koreaMap")
-      .attr("class", function (d) {
+        .attr("id", "koreaMap")
+        .attr("class", function (d) {
         return `City ${d.properties.name}`;
       })
       .style("opacity", 0.8)
-      .attr("fill", "#69b3a2")
-      .attr("d", d3.geoPath().projection(projection))
+        .attr("fill", "#69b3a2")
+        .attr("d", d3.geoPath().projection(projection))
       .style("stroke", "#fff")
       .on("mouseover", mouseOver)
       .on("mouseleave", mouseLeave)
