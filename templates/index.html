@@ -1,6 +1,7 @@
 <!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <title>BizBot</title>
@@ -12,6 +13,7 @@
       href="{{ url_for('static',filename='styles.css') }}"
     />
   </head>
+
   <body>
     <main>
       <!-- create nave-bar -->
@@ -53,17 +55,27 @@
         <div id="coronaGraph">
 
         </div>
-        <iframe src="https://datahub.io/core/covid-19/view/1" width="100%" height="475px" frameborder="0"></iframe>
+        <iframe 
+          src="https://datahub.io/core/covid-19/view/1" width="100%" height="475px" frameborder="0">
+        </iframe>
       </div>
     </main>
+
     <!-- Load d3.js -->
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <!-- Color Scale -->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
     <!-- for local import -->
     <script src="../static/koreaMap.js"></script>
+    <script src="../static/coronaGraph.js"></script>
+
     <!-- for server import -->
     <script src="{{url_for('static',filename='koreaMap.js')}}"></script>
-    <script src="coronaGraph.js"></script>
+    <script src="{{url_for('static',filename='coronaGraph.js')}}"></script>
+
   </body>
 </html>

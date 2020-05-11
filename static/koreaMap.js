@@ -6,9 +6,8 @@ let area = "전체";
 let category = "지역별 랭킹";
 
 // The svg
-//var svg = d3.select("#"),
-var width = 500;//+svg.attr("width"),
-    height = 500;//+svg.attr("height");
+var width = 500,
+  height = 500;
 
 // Map and projection
 var projection = d3
@@ -17,24 +16,19 @@ var projection = d3
   .scale(width*10)
   .translate([width/2, height/2]);
 
-function showItem() {
-  selceted.innerText = `지역: ${area}, 아이템: ${category}을 보여줍니다.`;
-}
-
 // Load external data and boot
-d3.json(
-  "https://www.amcharts.com/lib/4/geodata/json/southKoreaHigh.json",
+d3.json("https://www.amcharts.com/lib/4/geodata/json/southKoreaHigh.json",
   function (data) {
-    let mouseOver = function (d) {
+    function mouseOver(d) {
       d3.selectAll(".City").transition().duration(200).style("opacity", 0.5);
       d3.select(this).transition().duration(200).style("opacity", 1);
     };
 
-    let mouseLeave = function (d) {
+    function mouseLeave(d) {
       d3.selectAll(".City").transition().duration(200).style("opacity", 0.8);
     };
 
-    let mouseClick = function (d) {
+    function mouseClick(d) {
       area = d.properties.name;
       d3.selectAll(".City").attr("fill", "#69b3a2");
       d3.select(this).attr("fill", "#FF3B30");
@@ -42,7 +36,7 @@ d3.json(
     };
 
     // Draw the map
-    var svg = d3.select("#map")
+    var map_svg = d3.select("#map")
       .append("svg")
         .attr("width", width+100)
         .attr("height", height+100)
@@ -62,9 +56,12 @@ d3.json(
       .on("mouseover", mouseOver)
       .on("mouseleave", mouseLeave)
       .on("click", mouseClick);
-  }
-);
+})
 
+function showItem() {
+  selceted.innerText = `지역: ${area}, 아이템: ${category}을 보여줍니다.`;
+}
+  
 function handleClickItem(event) {
   if (
     event.toElement.parentNode.classList.contains(
