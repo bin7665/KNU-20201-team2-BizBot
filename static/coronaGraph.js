@@ -1,8 +1,6 @@
-const CSVFILE = "../static/key-countries-pivoted_csv.csv"; //"https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_connectedscatter.csv"
-
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 460 - margin.left - margin.right,
+var margin = {top: 10, right: 100, bottom: 30, left: 100},
+    width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -11,37 +9,31 @@ var svg = d3.select("#coronaGraph")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("../static/key-countries-pivoted_csv.csv",
+d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-countries-pivoted.csv",
  function(data) {
-    console.log(data);
     // List of groups (here I have one group per column)
-    var allGroup = ["valueA", "valueB", "valueC"]
-    //var allGroup = ["China", "US", "United_Kingdom", "Italy", "France", "Germany", "Spain", "Iran"]
-
+    var allGroup = ["China","US","United_Kingdom","Italy","France","Germany","Spain","Iran"]
     // Reformat the data: we need an array of arrays of {x, y} tuples
     var dataReady = allGroup.map( function(grpName) { // .map allows to do something for each element of the list
       return {
         name: grpName,
         values: data.map(function(d) {
-          return {time: d.time, value: +d[grpName]};
+          return {Date: d3.timeParse("%Y-%m-%d")(d.Date), value: +d[grpName]};
         })
       };
     });
-    // I strongly advise to have a look to dataReady with
-    //console.log(dataReady)
-
+    
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
       .range(d3.schemeSet2);
 
-    // Add X axis --> it is a date format
-    var x = d3.scaleLinear()
-      .domain([0,10])
+    // Add X axis --> it is a Date format
+    var x = d3.scaleTime()
+      .domain(d3.extent(data, function(d) { return d3.timeParse("%Y-%m-%d")(d.Date) }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -49,14 +41,51 @@ d3.csv("../static/key-countries-pivoted_csv.csv",
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,20])
+      .domain([
+        d3.min(data.map(function(d){
+          return d3.min(allGroup.map(function(name){
+            return parseInt(d[name])
+          }))
+        })),
+        d3.max(data.map(function(d){
+          return d3.max(allGroup.map(function(name){
+            return parseInt(d[name])
+          }))
+        }))])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
 
+    // create a tooltip
+    var Tooltip = d3.select("#coronaGraph")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "2px")
+      .style("border-radius", "5px")
+      .style("padding", "5px")
+
+    // Three function that change the tooltip when user hover / move / leave a cell
+    var mouseover = function(d) {
+      Tooltip
+          .style("opacity", 1)
+    }
+    var mousemove = function(d) {
+      Tooltip
+        .html("Exact value: " + d.value)
+        .style("left", (d3.mouse(this)[0]+70) + "px")
+        .style("top", (d3.mouse(this)[1]) + "px")
+    }
+    var mouseleave = function(d) {
+      Tooltip
+        .style("opacity", 0)
+    }
+
     // Add the lines
-    var line = d3.line()
-      .x(function(d) { return x(+d.time) })
+    var line = d3.line().curve(d3.curveBasis)
+      .x(function(d) { return x(+d.Date) })
       .y(function(d) { return y(+d.value) })
     svg.selectAll("myLines")
       .data(dataReady)
@@ -67,33 +96,32 @@ d3.csv("../static/key-countries-pivoted_csv.csv",
         .style("stroke-width", 4)
         .style("fill", "none")
 
-    // Add the points
-    svg
-      // First we need to enter in a group
-      .selectAll("myDots")
+    //Add the points
+    svg.selectAll("myDots")
       .data(dataReady)
       .enter()
         .append('g')
         .style("fill", function(d){ return myColor(d.name) })
-      // Second we need to enter in the 'values' part of this group
       .selectAll("myPoints")
       .data(function(d){ return d.values })
       .enter()
       .append("circle")
-        .attr("cx", function(d) { return x(d.time) } )
+        .attr("cx", function(d) { return x(d.Date) } )
         .attr("cy", function(d) { return y(d.value) } )
-        .attr("r", 5)
-        .attr("stroke", "white")
+        .attr("r", 2)
+        .attr("stroke", null)
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
 
-    // Add a legend at the end of each line
-    svg
-      .selectAll("myLabels")
+    //Add a legend at the end of each line 
+    svg.selectAll("myLabels")
       .data(dataReady)
       .enter()
         .append('g')
         .append("text")
-          .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each time series
-          .attr("transform", function(d) { return "translate(" + x(d.value.time) + "," + y(d.value.value) + ")"; }) // Put the text at the position of the last point
+          .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each Date series
+          .attr("transform", function(d) { return "translate(" + x(d.value.Date) + "," + y(d.value.value) + ")"; }) // Put the text at the position of the last point
           .attr("x", 12) // shift the text a bit more right
           .text(function(d) { return d.name; })
           .style("fill", function(d){ return myColor(d.name) })
