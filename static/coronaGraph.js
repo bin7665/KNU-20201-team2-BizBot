@@ -3,8 +3,8 @@ var margin = {top: 10, right: 100, bottom: 30, left: 100},
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#coronaGraph")
+// append the coronagrp_svg object to the body of the page
+var coronagrp_svg = d3.select("#coronaGraph")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -35,7 +35,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
     var x = d3.scaleTime()
       .domain(d3.extent(data, function(d) { return d3.timeParse("%Y-%m-%d")(d.Date) }))
       .range([ 0, width ]);
-    svg.append("g")
+    coronagrp_svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
@@ -53,7 +53,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
           }))
         }))])
       .range([ height, 0 ]);
-    svg.append("g")
+    coronagrp_svg.append("g")
       .call(d3.axisLeft(y));
 
     // create a tooltip
@@ -87,7 +87,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
     var line = d3.line().curve(d3.curveBasis)
       .x(function(d) { return x(+d.Date) })
       .y(function(d) { return y(+d.value) })
-    svg.selectAll("myLines")
+    coronagrp_svg.selectAll("myLines")
       .data(dataReady)
       .enter()
       .append("path")
@@ -97,7 +97,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
         .style("fill", "none")
 
     //Add the points
-    svg.selectAll("myDots")
+    coronagrp_svg.selectAll("myDots")
       .data(dataReady)
       .enter()
         .append('g')
@@ -115,7 +115,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
         .on("mouseleave", mouseleave)
 
     //Add a legend at the end of each line 
-    svg.selectAll("myLabels")
+    coronagrp_svg.selectAll("myLabels")
       .data(dataReady)
       .enter()
         .append('g')
