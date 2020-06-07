@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GraphPage</title>
+        <meta charset="utf-8" />
+        <link rel = "stylesheet" href="style.css" />
+    </head>
+
+    <body class="scrolltriger">
+        <header>
+            <h2>5년동안의 정부지원사업 개요</h2>
+        </header>
+
+        <main>
+            <div>
+                <section>
+                    <span class = "sectionExplain">
+                        <p class="subtitle">총 정부지원사업 수</p>
+                        <p>2015년 ~ 2019년 동안 정부지원사업은 <em>34042건</em> 이 있었습니다.</p>
+                    </span>
+                    <div data-scroll class = "graph" id="section1_graph1"></div>
+    
+                    <div data-scroll>
+                        <span class = "sectionExplain">
+                            <p>연도별</p>
+                        </span>
+                        <div class = "graph" id = "section1_graph2"></div>
+                    </div>
+    
+                    <div data-scroll>
+                        <span class = "sectionExplain">
+                            <p>월별</p>
+                        </span>
+                        <div class = "graph" id = "section1_graph3"></div>
+                    </div>
+                </section>
+            </div>
+    
+            <div>
+                <section>
+                    <span class = "sectionExplain">
+                        <p class="subtitle">지원 사업 조회수</p>
+                        <p>지원 사업에 대한 사람들의 관심도의 변화는 이렇습니다</p>
+                    </span>
+                    <div data-scroll class = "graph" id="section2_graph1"></div>
+                </section>
+            </div>
+    
+            <div>
+                <section>
+                    <span class = "sectionExplain">
+                        <p class="subtitle">부서별 정부지원사업</p>
+                        <p>정부지원사업은 여러 부서에서 지원해줍니다.</p>
+                    </span>
+                    <div data-scroll class = "graph" id="section2_graph2"></div>
+                </section>
+            </div>
+    
+            <div>
+                <section>
+                    <span class = "sectionExplain">
+                        <p>또한 여러 방향에서 지원을 해줍니다.</p>
+                    </span>
+                    <div data-scroll class = "graph" id="section2_graph3"></div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <!-- Color scale -->
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <!-- Scroll trigger event -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/0.3.6/ScrollTrigger.min.js"></script>
+        
+        <script src="event.js"></script>
+        <script src="section1_graph1.js"></script>
+        <script src="section1_graph2.js"></script>
+        <script src="section1_graph3.js"></script>
+        <script src="section2_graph1.js"></script>
+        <script src="section2_graph2.js"></script>
+        <script src="section2_graph3.js"></script>
+    </body>
+</html>
