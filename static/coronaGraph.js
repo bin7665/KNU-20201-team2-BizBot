@@ -21,7 +21,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
       return {
         name: grpName,
         values: data.map(function(d) {
-          return {Date: d3.timeParse("%Y-%m-%d")(d.Date), value: +d[grpName]};
+          return {Date: (d.Date), value: +d[grpName]};
         })
       };
     });
@@ -33,7 +33,7 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
 
     // Add X axis --> it is a Date format
     var x = d3.scaleTime()
-      .domain(d3.extent(data, function(d) { return d3.timeParse("%Y-%m-%d")(d.Date) }))
+      .domain(d3.extent(data, function(d) { return d.date }))
       .range([ 0, width ]);
     coronagrp_svg.append("g")
       .attr("transform", "translate(0," + height + ")")
