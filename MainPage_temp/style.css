@@ -3,14 +3,14 @@
 header{
     font-size: 45px;
     /* background-color: #84a708be; */
-    background-color: url(/image/banner.png)no-repeat;
+    background-color: url(https://github.com/bin7665/KNU-20201-team2-BizBot/blob/master/MainPage(testing)/image/banner.png);
     padding: 0 2rem;
     overflow: hidden;
     color: #fff;
     line-height: 4rem;
-    position: fixed;
     width: 100%;
     top: 0;
+    position: fixed;
     transition: transform .3s linear;
 }
 
@@ -26,7 +26,7 @@ body{
 main {
     width: 75%;
     margin: 3rem auto 0;
-    padding-top: 4rem;
+    padding-top: 10rem;
 }
 
 .sectionExplain {
