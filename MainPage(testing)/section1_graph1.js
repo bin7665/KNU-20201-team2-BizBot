@@ -1,6 +1,36 @@
+///////////////////////////////////////////////scroll Event//////////////////////////////////////////////////////////////////
 const s1g1Graph = document.querySelector("#section1_graph1");
+var graph1viewTop = window.pageYOffset + s1g1Graph.getBoundingClientRect().top;
 var ticking = false;
 
+setInterval(function() {
+    var rand1 = (Math.random() * s1g1Width + window.innerHeight);
+    var rand2 = (Math.random() * s1g1height + graph1viewTop);
+    root.fx = rand1;
+    root.fy = rand2;
+    s1g1Force.alphaTarget(0.2).restart();//reheat the simulation
+}, 100);
+
+function update(scroll_pos){
+    if(s1g1Graph.classList.contains("visible")){
+        s1g1Dot.transition().duration(1000).attr("r", 6)
+        s1g1Force.restart();
+    }
+}
+
+window.addEventListener('scroll', function(e){
+    last_scroll_pos = window.scrollY;
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+          update(last_scroll_pos);
+          ticking = false;
+        });
+    
+        ticking = true;
+      }
+})
+//////////////////////////////////////////////scroll Event//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////Graph//////////////////////////////////////////////////////////////////
 var s1g1Width = 450
 var s1g1height = 450
 
@@ -46,35 +76,6 @@ function ticked(e) {
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
 };
-
-var graph1viewTop = window.pageYOffset + s1g1Graph.getBoundingClientRect().top;
-
-setInterval(function() {
-    var rand1 = (Math.random() * s1g1Width + window.innerHeight);
-    var rand2 = (Math.random() * s1g1height + graph1viewTop);
-    root.fx = rand1;
-    root.fy = rand2;
-    s1g1Force.alphaTarget(0.2).restart();//reheat the simulation
-}, 100);
-
-function update(scroll_pos){
-    if(s1g1Graph.classList.contains("visible")){
-        s1g1Dot.transition().duration(1000).attr("r", 6)
-        s1g1Force.restart();
-    }
-}
-
-window.addEventListener('scroll', function(e){
-    last_scroll_pos = window.scrollY;
-    if (!ticking) {
-        window.requestAnimationFrame(function() {
-          update(last_scroll_pos);
-          ticking = false;
-        });
-    
-        ticking = true;
-      }
-})
 
 d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/static/data/d3_data.csv",
  function(data) {

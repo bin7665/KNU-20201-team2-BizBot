@@ -15,7 +15,7 @@
             <div>
                 <section>
                     <span class = "sectionExplain">
-                        <p class="subtitle">총 정부지원사업 수</p>
+                        <p class="subtitle">=총 정부지원사업 수=</p>
                         <p>2015년 ~ 2019년 동안 정부지원사업은 <em>34042건</em> 이 있었습니다.</p>
                     </span>
                     <div data-scroll class = "graph" id="section1_graph1"></div>
@@ -39,7 +39,7 @@
             <div>
                 <section>
                     <span class = "sectionExplain">
-                        <p class="subtitle">지원 사업 조회수</p>
+                        <p class="subtitle">=지원 사업 조회수=</p>
                         <p>지원 사업에 대한 사람들의 관심도의 변화는 이렇습니다</p>
                     </span>
                     <div data-scroll class = "graph" id="section2_graph1"></div>
@@ -49,10 +49,11 @@
             <div>
                 <section>
                     <span class = "sectionExplain">
-                        <p class="subtitle">부서별 정부지원사업</p>
+                        <p class="subtitle">=부서별 정부지원사업=</p>
                         <p>정부지원사업은 여러 부서에서 지원해줍니다.</p>
                     </span>
-                    <div data-scroll class = "graph" id="section2_graph2"></div>
+                    <span data-scroll class = "graph" id="section2_graph2"></span>
+                    <span data-scroll class = "graph" id="section2_graph2_2"></span>
                 </section>
             </div>
     
@@ -62,6 +63,22 @@
                         <p>또한 여러 방향에서 지원을 해줍니다.</p>
                     </span>
                     <div data-scroll class = "graph" id="section2_graph3"></div>
+                </section>
+            </div>
+
+            <div>
+                <section>
+                    <span class = "sectionExplain">
+                        <p class="subtitle">=접수 기간=</p>
+                        <p>마지막으로 정부지원사업들의 접수 기간은 얼마나 되는지 알아보겠습니다.</p>
+                    </span>
+                    <!-- Add a radio button -->
+                    <input type="range" id="buttonXlim" value=200 min="25" max="400" step= "25">
+                    <div data-scroll class = "graph" id="section3_graph1"></div>
+                    <span class = "sectionExplain">
+                        <p>접수 기간이 긴 것도 있지만 짧은 것이 훨씬 많네요. 항상 정부지원사업에 관심을 갖고 지켜보는 게 좋을 것 같습니다.</p>
+                        <p>비즈봇 카카오페이지 바로가기 >></p>
+                    </span>
                 </section>
             </div>
         </main>
@@ -79,6 +96,8 @@
         <script src="section1_graph3.js"></script>
         <script src="section2_graph1.js"></script>
         <script src="section2_graph2.js"></script>
+        <script src="section2_graph2_2.js"></script>
         <script src="section2_graph3.js"></script>
+        <script src="section3_graph1.js"></script>
     </body>
 </html>

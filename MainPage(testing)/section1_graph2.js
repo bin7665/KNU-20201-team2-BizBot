@@ -38,27 +38,27 @@ var y = d3.scaleBand()
 s1g2Svg.append("g")
   .call(d3.axisLeft(y))
 
-// Lines
+  // Lines
 s1g2Svg.selectAll("myline")
-  .data(data)
-  .enter()
-  .append("line")
-    .attr("x1", x(0))
-    .attr("x2", x(0))
-    .attr("y1", function(d) { return y(d.year); })
-    .attr("y2", function(d) { return y(d.year); })
-    .attr("stroke", "grey")
+.data(data)
+.enter()
+.append("line")
+  .attr("x1", x(0))
+  .attr("x2", x(0))
+  .attr("y1", function(d) { return y(d.year); })
+  .attr("y2", function(d) { return y(d.year); })
+  .attr("stroke", "grey")
 
-// Circles -> start at X=0
+  // Circles -> start at X=0
 s1g2Svg.selectAll("mycircle")
-  .data(data)
-  .enter()
-  .append("circle")
-    .attr("cx", x(0) )
-    .attr("cy", function(d) { return y(d.year); })
-    .attr("r", "7")
-    .style("fill", "#69b3a2")
-    .attr("stroke", "black")
+.data(data)
+.enter()
+.append("circle")
+  .attr("cx", x(0) )
+  .attr("cy", function(d) { return y(d.year); })
+  .attr("r", "7")
+  .style("fill", "#69b3a2")
+  .attr("stroke", "black")
 
 // Change the X coordinates of line and circle
 s1g2Svg.selectAll("circle")
@@ -71,3 +71,9 @@ s1g2Svg.selectAll("line")
   .duration(2000)
   .attr("x1", function(d) { return x(d.value); })
 })
+
+
+
+
+
+
