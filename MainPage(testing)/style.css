@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&family=Noto+Sans+KR:wght@700&display=swap');
 
 header{
     display: inline-block;
@@ -28,11 +28,16 @@ main {
 }
 
 .sectionExplain {
-    background-color: rgba(138, 138, 138, 0.377);;
+    background-color: rgba(138, 138, 138, 0.377);
     fill: rgba(255, 255, 255, 0.5);
 }
 
 .subtitle {
+    font-size: 20px;
+}
+
+.graph{
+    font-family: 'Nanum Gothic Coding', monospace;
     font-size: 20px;
 }
 
