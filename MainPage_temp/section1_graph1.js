@@ -1,10 +1,11 @@
 ///////////////////////////////////////////////scroll Event//////////////////////////////////////////////////////////////////
 const s1g1Graph = document.querySelector("#section1_graph1");
 var graph1viewTop = window.pageYOffset + s1g1Graph.getBoundingClientRect().top;
+var graph1viewLeft = window.pageXOffset + s1g1Graph.getBoundingClientRect().left;
 var ticking = false;
 
 setInterval(function() {
-    var rand1 = (Math.random() * s1g1Width + window.innerHeight);
+    var rand1 = (Math.random() * s1g1Width + graph1viewLeft);
     var rand2 = (Math.random() * s1g1height + graph1viewTop);
     root.fx = rand1;
     root.fy = rand2;

@@ -1,16 +1,16 @@
-// set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 50},
-    s2g1Width = 700 - margin.left - margin.right,
-    s2g1Height = 400 - margin.top - margin.bottom;
+// set the dimensions and s2g1Margins of the graph
+var s2g1Margin = {top: 10, right: 30, bottom: 30, left: 50},
+    s2g1Width = 700 - s2g1Margin.left - s2g1Margin.right,
+    s2g1Height = 400 - s2g1Margin.top - s2g1Margin.bottom;
 
 // append the svg object to the body of the page
 var s2g1Svg = d3.select("#section2_graph1")
   .append("svg")
-    .attr("width", s2g1Width + margin.left + margin.right)
-    .attr("height", s2g1Height + margin.top + margin.bottom)
+    .attr("width", s2g1Width + s2g1Margin.left + s2g1Margin.right)
+    .attr("height", s2g1Height + s2g1Margin.top + s2g1Margin.bottom + 50)
     .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+          "translate(" + s2g1Margin.left + "," + s2g1Margin.top + ")");
 
 //Read the data
 d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/static/data/inquiry_data.csv",
@@ -36,7 +36,17 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         .padding(5);
     s2g1Svg.append("g")
       .attr("transform", "translate(0," + s2g1Height + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .text(function(d){
+          var Str = JSON.stringify(d);
+          var year = Str.substring(1,5);
+          var quarter = Str.substring(5,6);
+          var text = year +"년 "+ quarter+"분기";
+          return text
+        })
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
 
     // Add Y axis
     var y = d3.scaleLinear()

@@ -52,12 +52,20 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       .append('path')
         .attr('d', arcGenerator)
         .attr('fill', function(d){ return color_1(d.data.key)})
-        .attr("stroke", "black")
-        .style("stroke-width", "2px")
+        .style("stroke-width", "1px")
         .style("opacity", 0.7)
 
     // Now add the annotation. Use the centroid method to get the best coordinates
-    s2g2Svg_1
+    // s2g2Svg_1
+    //   .selectAll('mySlices')
+    //   .data(data_ready_1)
+    //   .enter()
+    //   .append('text')
+    //   .text(function(d){ return d.data.key})
+    //   .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+    //   .style("text-anchor", "middle")
+    //   .style("font-size", 17)
+    var text = s2g2Svg_1
       .selectAll('mySlices')
       .data(data_ready_1)
       .enter()
@@ -66,4 +74,30 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
       .style("text-anchor", "middle")
       .style("font-size", 17)
+
+  // function midAngle(d){
+	// 	return d.startAngle + (d.endAngle - d.startAngle)/2;
+	// }
+
+	// text.transition().duration(1000)
+	// 	.attrTween("transform", function(d) {
+	// 		this._current = this._current || d;
+	// 		var interpolate = d3.interpolate(this._current, d);
+	// 		this._current = interpolate(0);
+	// 		return function(t) {
+	// 			var d2 = interpolate(t);
+	// 			var pos = outerArc.centroid(d2);
+	// 			pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+	// 			return "translate("+ pos +")";
+	// 		};
+	// 	})
+	// 	.styleTween("text-anchor", function(d){
+	// 		this._current = this._current || d;
+	// 		var interpolate = d3.interpolate(this._current, d);
+	// 		this._current = interpolate(0);
+	// 		return function(t) {
+	// 			var d2 = interpolate(t);
+	// 			return midAngle(d2) < Math.PI ? "start":"end";
+	// 		};
+	// 	});
 })

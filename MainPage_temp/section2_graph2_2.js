@@ -53,7 +53,6 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       .append('path')
         .attr('d', arcGenerator)
         .attr('fill', function(d){ return color_2(d.data.key)})
-        .attr("stroke", "black")
         .style("stroke-width", "2px")
         .style("opacity", 0.7)
 
