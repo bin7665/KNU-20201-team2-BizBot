@@ -15,20 +15,19 @@ var svg = d3.select("#section2_graph2")
     .attr("transform", "translate(" + s2g2Width / 2 + "," + s2g2Height / 2 + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/static/data/category_inquiry.csv",
+d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/static/data/depart_data.csv",
   // When reading the csv, I must format variables:
   function(d){
     // const textdecoder = new TextDecoder("iso-2022-cn-ext");//"\ufeff"+
     // console.log(textdecoder.decode(d.Department))
-    return { depart : d.category, value : +d.Value }
+    return { depart : d.depart, value : +d.value }
   },
 
   // Now I can use this dataset:
   function(data) {
-    console.log(data)
     // set the color scale
     var color = d3.scaleOrdinal()
-      .domain(function(d) {return d.depart})
+      .domain(data.map(function(d){return d.value}))
       .range(d3.schemeSet2);
 
     // Compute the position of each group on the pie:
