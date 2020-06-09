@@ -26,6 +26,8 @@ d3.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/key-coun
       };
     });
     
+console.log(dataReady)
+
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)

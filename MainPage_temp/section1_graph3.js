@@ -1,12 +1,12 @@
 // set the dimensions and s1g3Margins of the graph
-var s1g3Margin = {top: 10, right: 30, bottom: 40, left: 130},
+var s1g3Margin = {top: 10, right: 30, bottom: 40, left: 70},
     s1g3Width = 1500 - s1g3Margin.left - s1g3Margin.right,
     s1g3Height = 460 - s1g3Margin.top - s1g3Margin.bottom;
 
 // append the svg object to the body of the page
 var s1g3Svg = d3.select("#section1_graph3")
   .append("svg")
-    .attr("width", s1g3Width + s1g3Margin.left + s1g3Margin.right)
+    .attr("width", s1g3Width + s1g3Margin.left + s1g3Margin.right+50)
     .attr("height", s1g3Height + s1g3Margin.top + s1g3Margin.bottom + 50)
   .append("g")
     .attr("transform",
@@ -44,6 +44,13 @@ var y = d3.scaleLinear()
   .range([ 0, s1g3Height]);
 s1g3Svg.append("g")
   .call(d3.axisLeft(y))
+
+s1g3Svg.append('text')
+  .text("사업수")
+  .attr("writing-mode", "vertical-rl")
+  .attr("transform", "translate(" + (-50) + "," + (s1g3Height/2) + ")")
+  .style("text-anchor", "middle")
+  .style("font-size", 10)
 
 // Lines
 s1g3Svg.selectAll("myline")

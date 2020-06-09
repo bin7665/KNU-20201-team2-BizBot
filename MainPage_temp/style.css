@@ -32,6 +32,13 @@ main {
     padding-top: 10rem;
 }
 
+footer {
+    margin-top: 60px;
+    width: 100%;
+    line-height: 10rem;
+    background-color: #a4c03d83;  
+}
+
 .sectionExplain {
     background-color: rgba(138, 138, 138, 0.377);
     fill: rgba(255, 255, 255, 0.5);

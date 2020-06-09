@@ -27,7 +27,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         },
         "titleSubtitlePadding": 9
       },"size": {
-        "canvasWidth": window.innerWidth/2,
+        //"canvasWidth": window.innerWidth/2,
         "pieOuterRadius": "90%"
       },
       data: {
@@ -62,27 +62,28 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       },
     });
 
-    const color = d3.scaleOrdinal(d3.schemeCategory20);
+// let legend = d3.select("#section2_graph2").append('div')
+//   .attr('class', 'legend')
+//   .style('margin-top', '30px');
 
-    var legend = s2g2Svg.selectAll('legend')
-			.data(data.slice(0,50))
-			.enter().append('g')
-			.attr('class', 'legend')
-			.attr('transform', function(d,i){ 
-          //return 'translate(' + ( -50+s2g2Width/4*(Math.floor(i/25)-1) ) + ',' + (i%25 * 20) + ')';
-          return `translate(0,0)`
-      });
+// let keys = legend.selectAll('.key')
+// 			.data(data)
+// 			.enter().append('div')
+// 			.attr('class', 'key')
+// 			.style('display', 'flex')
+// 			.style('align-items', 'center')
+// 			.style('margin-right', '20px');
 
-		legend.append('rect')
-			.attr('x', s2g2Width)
-			.attr('width', 18)
-			.attr('height', 18)
-			.style('fill', function(d){return color(d.depart);});
+// 		keys.append('div')
+// 			.attr('class', 'symbol')
+// 			.style('height', '10px')
+// 			.style('width', '10px')
+// 			.style('margin', '5px 5px')
+// 			.style('background-color', (d, i) => color(i));
 
-		legend.append('text')
-			.attr('x', s2g2Width - 6)
-			.attr('y', 9)
-			.attr('dy', '.35em')
-			.style('text-anchor', 'end')
-			.text(function(d){ return d.depart + ': ' + d.value; });
+// 		keys.append('div')
+// 			.attr('class', 'name')
+// 			.text(d => `${d.depart} (${d.value})`);
+
+// 		keys.exit().remove();
   })

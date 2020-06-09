@@ -1,12 +1,12 @@
 // set the dimensions and s2g1Margins of the graph
-var s2g1Margin = {top: 10, right: 30, bottom: 30, left: 50},
+var s2g1Margin = {top: 10, right: 30, bottom: 30, left: 70},
     s2g1Width = 700 - s2g1Margin.left - s2g1Margin.right,
     s2g1Height = 400 - s2g1Margin.top - s2g1Margin.bottom;
 
 // append the svg object to the body of the page
 var s2g1Svg = d3.select("#section2_graph1")
   .append("svg")
-    .attr("width", s2g1Width + s2g1Margin.left + s2g1Margin.right)
+    .attr("width", s2g1Width + s2g1Margin.left + s2g1Margin.right+50)
     .attr("height", s2g1Height + s2g1Margin.top + s2g1Margin.bottom + 50)
     .append("g")
     .attr("transform",
@@ -54,6 +54,13 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       .range([ s2g1Height, 0 ]);
     s2g1Svg.append("g")
       .call(d3.axisLeft(y));
+
+    s2g1Svg.append('text')
+      .text("조회수")
+      .attr("writing-mode", "vertical-rl")
+      .attr("transform", "translate(" + (-50) + "," + (s2g1Height/2) + ")")
+      .style("text-anchor", "middle")
+      .style("font-size", 10)
 
     // create a tooltip
     var Tooltip = d3.select("#section2_graph1")

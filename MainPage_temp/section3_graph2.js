@@ -1,12 +1,12 @@
 // set the dimensions and s3g2Margins of the graph
-var s3g2Margin = {top: 10, right: 30, bottom: 30, left: 60},
+var s3g2Margin = {top: 10, right: 30, bottom: 30, left: 80},
     s3g2Width = 800 - s3g2Margin.left - s3g2Margin.right,
     s3g2Height = 400 - s3g2Margin.top - s3g2Margin.bottom;
     // append the s3g2Svg object to the body of the page
     var s3g2Svg = d3.select("#section3_graph2")
       .append("svg")
-        .attr("width", s3g2Width + s3g2Margin.left + s3g2Margin.right)
-        .attr("height", s3g2Height + s3g2Margin.top + s3g2Margin.bottom)
+        .attr("width", s3g2Width + s3g2Margin.left + s3g2Margin.right+70)
+        .attr("height", s3g2Height + s3g2Margin.top + s3g2Margin.bottom+40)
       .append("g")
         .attr("transform", "translate(" + s3g2Margin.left + "," + s3g2Margin.top + ")")
 
@@ -20,11 +20,11 @@ function(d){
 
 function(data) {
   // Add X axis
-  var x = d3.scaleLinear()
+  var x = d3.scaleTime()
     .domain([0, 0])
     .range([ 0, s3g2Width ]);
   var s3g2xAxis=s3g2Svg.append("g")
-    .attr("class", "myXaxis")   // Note that here we give a class to the X axis, to be able to call it later and modify it
+    .attr("class", "myXaxis2")   // Note that here we give a class to the X axis, to be able to call it later and modify it
     .attr("transform", "translate(0," + s3g2Height + ")")
     .call(d3.axisBottom(x))
     .attr("opacity", "0")
@@ -47,12 +47,26 @@ function(data) {
       .attr("r", 1.5)
       .style("fill", "#69b3a2")
 
+  s3g2Svg.append('text')
+    .text("조회수")
+    .attr("writing-mode", "vertical-rl")
+    .attr("transform", "translate(" + (-50) + "," + (s3g1Height/2) + ")")
+    .style("text-anchor", "middle")
+    .style("font-size", 10)
+
+  s3g2Svg.append('text')
+      .text("등록일자")
+      .attr("transform", "translate(" + s3g1Width / 2 + "," + (s3g1Height+40) + ")")
+      .style("text-anchor", "middle")
+      .style("font-size", 10)
+
   // new X axis
   x.domain(d3.extent(data, function(d) {return d.date}))
   s3g2xAxis.selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
-  s3g2Svg.select(".myXaxis")
+        
+  s3g2Svg.select(".myXaxis2")
     .transition()
     .duration(2000)
     .attr("opacity", "1")

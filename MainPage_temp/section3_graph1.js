@@ -1,12 +1,12 @@
 // set the dimensions and s3g1Margins of the graph
-var s3g1Margin = {top: 10, right: 30, bottom: 30, left: 60},
+var s3g1Margin = {top: 10, right: 30, bottom: 30, left: 80},
     s3g1Width = 760 - s3g1Margin.left - s3g1Margin.right,
     s3g1Height = 400 - s3g1Margin.top - s3g1Margin.bottom;
     // append the svg object to the body of the page
     var s3g1Svg = d3.select("#section3_graph1")
       .append("svg")
-        .attr("width", s3g1Width + s3g1Margin.left + s3g1Margin.right)
-        .attr("height", s3g1Height + s3g1Margin.top + s3g1Margin.bottom)
+        .attr("width", s3g1Width + s3g1Margin.left + s3g1Margin.right+70)
+        .attr("height", s3g1Height + s3g1Margin.top + s3g1Margin.bottom+30)
       .append("g")
         .attr("transform",
               "translate(" + s3g1Margin.left + "," + s3g1Margin.top + ")")   
@@ -45,10 +45,16 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         .y(function(d) { return y(d.Value); })
     ) 
       
+    s3g1Svg.append('text')
+        .text("건 수")
+        .attr("writing-mode", "vertical-rl")
+        .attr("transform", "translate(" + (-50) + "," + (s3g1Height/2) + ")")
+        .style("text-anchor", "middle")
+        .style("font-size", 10)
 
     s3g1Svg.append('text')
-        .text("기간(일)")
-        .attr("transform", "translate(" + s3g1Width / 2 + "," + (s3g1Height+25) + ")")
+        .text("접수기간(일)")
+        .attr("transform", "translate(" + s3g1Width / 2 + "," + (s3g1Height+40) + ")")
         .style("text-anchor", "middle")
         .style("font-size", 10)
 

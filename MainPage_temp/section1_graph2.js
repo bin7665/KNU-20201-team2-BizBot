@@ -6,7 +6,7 @@ var s1g2Margin = {top: 10, right: 30, bottom: 50, left: 100},
 // append the svg object to the body of the page
 var s1g2Svg = d3.select("#section1_graph2")
   .append("svg")
-    .attr("width", s1g2Width + s1g2Margin.left + s1g2Margin.right)
+    .attr("width", s1g2Width + s1g2Margin.left + s1g2Margin.right+50)
     .attr("height", s1g2Height + s1g2Margin.top + s1g2Margin.bottom)
   .append("g")
     .attr("transform",
@@ -38,7 +38,12 @@ s1g2Svg.append("g")
       .attr("transform", "translate(-10,0)rotate(-45)")
       .style("text-anchor", "end");
   
-
+s1g2Svg.append('text')
+      .text("사업수")
+      .attr("writing-mode", "vertical-rl")
+      .attr("transform", "translate(" + (-50) + "," + (s1g2Height/2) + ")")
+      .style("text-anchor", "middle")
+      .style("font-size", 10)
 // Lines
 s1g2Svg.selectAll("myline")
 .data(data)

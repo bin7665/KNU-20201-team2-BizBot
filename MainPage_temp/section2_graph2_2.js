@@ -24,7 +24,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         },
         "titleSubtitlePadding": 9
       },"size": {
-        "canvasWidth": window.innerWidth/2,
+        //"canvasWidth": window.innerWidth/2,
         "canvasHeight": 500,
         "pieOuterRadius": "90%"
       },"footer": {
@@ -57,7 +57,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       //Here further operations/animations can be added like click event, cut out the clicked pie section.
       callbacks: {
         onMouseoverSegment: function (info) {
-          console.log("mouse in", info);
+          console.log("mouse in", mouseinEvent);
         },
         onMouseoutSegment: function (info) {
           console.log("mouseout:", info);
