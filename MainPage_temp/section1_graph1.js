@@ -67,9 +67,9 @@ var s1g1Dot = s1g1Svg.selectAll("circle")
     .enter().
     append("circle")
         .attr("r", 6)
-        .style("fill", "#69b3a2")
+        .style("fill", "#D1CC43")
         .style("fill-opacity", 0.7)
-        .attr("stroke", "#69a2b2")
+        .attr("stroke", "#8D880A")
         .style("stroke-width", 1)
 
 function ticked(e) {

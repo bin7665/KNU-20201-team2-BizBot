@@ -3,8 +3,8 @@
 header{
     font-size: 45px;
     color: #fff;
-    background-color: #84a708be;    
-    background-image: url('https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/MainPage_temp/image/banner.png') no-repeat;
+    background-color: #D1CC43;    
+    background-image: url('image\banner.png') no-repeat;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -36,7 +36,19 @@ footer {
     margin-top: 60px;
     width: 100%;
     line-height: 10rem;
-    background-color: #a4c03d83;  
+    background-color: #333325;  
+}
+
+button {
+    position: relative;
+    left: 700px;
+    top: 50px;
+}
+
+circle{
+    fill: #D1CC43;
+    stroke: #8D880A;
+
 }
 
 .sectionExplain {

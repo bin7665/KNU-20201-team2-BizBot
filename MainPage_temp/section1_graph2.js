@@ -63,8 +63,6 @@ s1g2Svg.selectAll("mycircle")
   .attr("cx", function(d) { return x(d.year); } )
   .attr("cy", y(0))
   .attr("r", "7")
-  .style("fill", "#69b3a2")
-  .attr("stroke", "black")
 
 // Change the X coordinates of line and circle
 s1g2Svg.selectAll("circle")

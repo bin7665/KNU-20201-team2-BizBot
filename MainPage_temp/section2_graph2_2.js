@@ -24,7 +24,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         },
         "titleSubtitlePadding": 9
       },"size": {
-        //"canvasWidth": window.innerWidth/2,
+        "canvasWidth": 600,
         "canvasHeight": 500,
         "pieOuterRadius": "90%"
       },"footer": {
