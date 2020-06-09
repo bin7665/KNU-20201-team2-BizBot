@@ -1,103 +1,88 @@
-// set the dimensions and margins of the graph
-var s2g2Width = 500,
-    s2g2Height = 500,
-    s2g2Margin = 40;
+var s2g2Width = 600,
+ s2g2Height = 600;
 
-// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-var radius_1 = Math.min(s2g2Width, s2g2Height) / 2 - s2g2Margin
-
-// append the svg object to the div called 'my_dataviz'
-var s2g2Svg_1 = d3.select("#section2_graph2")
-  .append("svg")
-    .attr("width", s2g2Width)
-    .attr("height", s2g2Height)
-  .append("g")
-    .attr("transform", "translate(" + s2g2Width / 2 + "," + s2g2Height / 2 + ")");
-
-//Read the data
 d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/static/data/depart_data_1.csv",
+  function(d){
+    return { label : d.depart, value : +d.value }
+  },
   // Now I can use this dataset:
   function(data) {
-    // When reading the csv, I must format variables:
-    var Stringdata1 = '{ ';
-        data.map(function(d){
-          Stringdata1 += `${JSON.stringify(d.depart)} : ${JSON.stringify(d.value)}, `;
-        })
-        Stringdata1 = Stringdata1.substr(0, Stringdata1.length-2);
-        Stringdata1 += ' }';
-
-    var dataReady1 = JSON.parse(Stringdata1)
+    // sort data
+    data.sort(function(a, b) {
+      return a.value - b.value;
+    });
     
-    // set the color scale
-    var color_1 = d3.scaleOrdinal()
-      .domain(dataReady1)
-      .range(d3.schemeSet2);
+    var pie = new d3pie("section2_graph2", {
+      header: {
+        "title": {
+          "text": "부서별 정부지원사업 건 수",
+          "fontSize": 24,
+          "font": "open sans"
+        },
+        "subtitle": {
+          "text": "정부체",
+          "color": "#999999",
+          "fontSize": 16,
+          "font": "open sans"
+        },
+        "titleSubtitlePadding": 9
+      },"size": {
+        "canvasWidth": window.innerWidth/2,
+        "pieOuterRadius": "90%"
+      },
+      data: {
+        content: data
+      },"labels": {
+        "outer": {
+          "pieDistance": 20
+        },
+        "inner": {
+          "hideWhenLessThanPercentage": 2
+        }
+      },"tooltips": {
+        "enabled": true,
+        "type": "placeholder",
+        "string": "{label}: {value}건, {percentage}%"
+      },"effects": {
+        "pullOutSegmentOnClick": {
+          "effect": "back",
+          "speed": 400,
+          "size": 8
+        }
+      },
+    
+      //Here further operations/animations can be added like click event, cut out the clicked pie section.
+      callbacks: {
+        onMouseoverSegment: function (info) {
 
-    // Compute the position of each group on the pie:
-    var pie_1 = d3.pie()
-      .value(function(d) { return d.value;})
-    var data_ready_1 = pie_1(d3.entries(dataReady1))
-    // Now I know that group A goes from 0 degrees to x degrees and so on.
+        },
+        onMouseoutSegment: function (info) {
 
-    // shape helper to build arcs:
-    var arcGenerator = d3.arc()
-      .innerRadius(0)
-      .outerRadius(radius_1)
+        },
+      },
+    });
 
-    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-    s2g2Svg_1
-      .selectAll('mySlices')
-      .data(data_ready_1)
-      .enter()
-      .append('path')
-        .attr('d', arcGenerator)
-        .attr('fill', function(d){ return color_1(d.data.key)})
-        .style("stroke-width", "1px")
-        .style("opacity", 0.7)
+    const color = d3.scaleOrdinal(d3.schemeCategory20);
 
-    // Now add the annotation. Use the centroid method to get the best coordinates
-    // s2g2Svg_1
-    //   .selectAll('mySlices')
-    //   .data(data_ready_1)
-    //   .enter()
-    //   .append('text')
-    //   .text(function(d){ return d.data.key})
-    //   .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-    //   .style("text-anchor", "middle")
-    //   .style("font-size", 17)
-    var text = s2g2Svg_1
-      .selectAll('mySlices')
-      .data(data_ready_1)
-      .enter()
-      .append('text')
-      .text(function(d){ return d.data.key})
-      .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-      .style("text-anchor", "middle")
-      .style("font-size", 17)
+    var legend = s2g2Svg.selectAll('legend')
+			.data(data.slice(0,50))
+			.enter().append('g')
+			.attr('class', 'legend')
+			.attr('transform', function(d,i){ 
+          //return 'translate(' + ( -50+s2g2Width/4*(Math.floor(i/25)-1) ) + ',' + (i%25 * 20) + ')';
+          return `translate(0,0)`
+      });
 
-  // function midAngle(d){
-	// 	return d.startAngle + (d.endAngle - d.startAngle)/2;
-	// }
+		legend.append('rect')
+			.attr('x', s2g2Width)
+			.attr('width', 18)
+			.attr('height', 18)
+			.style('fill', function(d){return color(d.depart);});
 
-	// text.transition().duration(1000)
-	// 	.attrTween("transform", function(d) {
-	// 		this._current = this._current || d;
-	// 		var interpolate = d3.interpolate(this._current, d);
-	// 		this._current = interpolate(0);
-	// 		return function(t) {
-	// 			var d2 = interpolate(t);
-	// 			var pos = outerArc.centroid(d2);
-	// 			pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-	// 			return "translate("+ pos +")";
-	// 		};
-	// 	})
-	// 	.styleTween("text-anchor", function(d){
-	// 		this._current = this._current || d;
-	// 		var interpolate = d3.interpolate(this._current, d);
-	// 		this._current = interpolate(0);
-	// 		return function(t) {
-	// 			var d2 = interpolate(t);
-	// 			return midAngle(d2) < Math.PI ? "start":"end";
-	// 		};
-	// 	});
-})
+		legend.append('text')
+			.attr('x', s2g2Width - 6)
+			.attr('y', 9)
+			.attr('dy', '.35em')
+			.style('text-anchor', 'end')
+			.text(function(d){ return d.depart + ': ' + d.value; });
+  })

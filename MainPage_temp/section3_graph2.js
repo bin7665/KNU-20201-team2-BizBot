@@ -1,6 +1,6 @@
 // set the dimensions and s3g2Margins of the graph
 var s3g2Margin = {top: 10, right: 30, bottom: 30, left: 60},
-    s3g2Width = 460 - s3g2Margin.left - s3g2Margin.right,
+    s3g2Width = 800 - s3g2Margin.left - s3g2Margin.right,
     s3g2Height = 400 - s3g2Margin.top - s3g2Margin.bottom;
     // append the s3g2Svg object to the body of the page
     var s3g2Svg = d3.select("#section3_graph2")

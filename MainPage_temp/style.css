@@ -55,10 +55,10 @@ main {
 
 .visible {
     opacity: 1;
-    transition: opacity .5s ease-in-out;
+    transition: opacity .7s ease-in-out;
 }
 
 .invisible {
     opacity: 0;
-    transition: opacity .5s ease-in-out;
+    transition: opacity .7s ease-in-out;
 }

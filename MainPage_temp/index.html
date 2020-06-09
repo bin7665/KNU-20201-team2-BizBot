@@ -4,6 +4,7 @@
         <title>GraphPage</title>
         <meta charset="utf-8" />
         <link rel = "stylesheet" href="style.css" />
+        
     </head>
 
     <body class="scrolltriger">
@@ -52,8 +53,10 @@
                         <p class="subtitle">=부서별 정부지원사업=</p>
                         <p>정부지원사업은 여러 부서에서 지원해줍니다.</p>
                     </span>
-                    <span data-scroll class = "graph" id="section2_graph2"></span>
-                    <span data-scroll class = "graph" id="section2_graph2_2"></span>
+                    <div>
+                        <span data-scroll class = "graph" id="section2_graph2" float = "left"></span>
+                        <span data-scroll class = "graph" id="section2_graph2_2" float = "right"></span>
+                    </div>
                 </section>
             </div>
     
@@ -94,6 +97,10 @@
 
         <!-- Load d3.js -->
         <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+        <script src="d3pie.js"></script>
+        <script src="d3.min.js"></script>
+
         <!-- Color scale -->
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
         <!-- Scroll trigger event -->
