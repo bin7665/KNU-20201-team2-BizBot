@@ -12,10 +12,10 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
     var pie = new d3pie("section2_graph3", {
       header: {
         "subtitle": {
-          "text": "카테고리별",
+          "text": "사업분야별",
           "color": "#999999",
           "fontSize": 18,
-          "font": "open sans"
+          "font": "Nanum Gothic Coding"
         },
         "titleSubtitlePadding": 9
       }, data: {

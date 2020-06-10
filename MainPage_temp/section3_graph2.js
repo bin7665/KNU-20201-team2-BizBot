@@ -19,11 +19,15 @@ function(d){
 },
 
 function(data) {
+  // sort data
+  data.sort(function(a, b) {
+    return a.date - b.date;
+  });
   // Add X axis
   var x = d3.scaleTime()
     .domain([0, 0])
     .range([ 0, s3g2Width ]);
-  var s3g2xAxis=s3g2Svg.append("g")
+  var s3g2xAxis = s3g2Svg.append("g")
     .attr("class", "myXaxis2")   // Note that here we give a class to the X axis, to be able to call it later and modify it
     .attr("transform", "translate(0," + s3g2Height + ")")
     .call(d3.axisBottom(x))
@@ -31,9 +35,9 @@ function(data) {
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return +d.value; })])
+    .domain([0, 30000])//d3.max(data, function(d) { return +d.value; })
     .range([ s3g2Height, 0]);
-  s3g2Svg.append("g")
+  var s3g2yAxis = s3g2Svg.append("g")
     .call(d3.axisLeft(y));
 
   // Add dots
@@ -52,19 +56,19 @@ function(data) {
     .attr("writing-mode", "vertical-rl")
     .attr("transform", "translate(" + (-50) + "," + (s3g1Height/2) + ")")
     .style("text-anchor", "middle")
-    .style("font-size", 10)
+    .style("font-size", 15)
 
   s3g2Svg.append('text')
       .text("등록일자")
-      .attr("transform", "translate(" + s3g1Width / 2 + "," + (s3g1Height+40) + ")")
+      .attr("transform", "translate(" + (s3g1Width / 2+20) + "," + (s3g1Height+40) + ")")
       .style("text-anchor", "middle")
-      .style("font-size", 10)
+      .style("font-size", 15)
 
   // new X axis
   x.domain(d3.extent(data, function(d) {return d.date}))
   s3g2xAxis.selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
-        .style("text-anchor", "end");
+        .style("text-anchor", "start");
         
   s3g2Svg.select(".myXaxis2")
     .transition()
@@ -74,8 +78,36 @@ function(data) {
 
   s3g2Svg.selectAll("circle")
     .transition()
-    .delay(function(d,i){return(i*2)})
-    .duration(500)
+    .delay(function(d,i){return(i)})
+    .duration(100)
     .attr("cx", function (d) { return x(d.date); } )
     .attr("cy", function (d) { return y(d.value); } )
+
+    // A function that update the plot for a given xlim value
+  function updatePlot() {
+    
+    // Get the value of the button
+    ylim = this.value
+
+    // Update X axis
+    x.domain([Number(new Date("January 1, 2015 00:00:00")),ylim])
+    s3g2xAxis.transition().duration(1000).call(d3.axisBottom(x))
+
+    // Update chart
+    s3g2Svg.selectAll("circle")
+      .transition()
+      .delay(function(d,i){return(i)})
+      .duration(100)
+      .attr("cx", function (d) { return x(d.date); } )
+      .attr("cy", function (d) { return y(d.value); } )
+  }
+
+  var V = d3.max(data, function(d) {return Number(d.date)})
+  // Add an event listener to the button created in the html part
+  d3.select("#buttonylim")
+    .attr("max", V)
+    .attr("value", V)
+    .attr("min", Number(new Date("January 1, 2016 00:00:00")))
+    .attr("step", V/100)
+    .on("input", updatePlot )
 })

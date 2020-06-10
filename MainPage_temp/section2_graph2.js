@@ -17,13 +17,13 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         "title": {
           "text": "부서별 정부지원사업 건 수",
           "fontSize": 24,
-          "font": "open sans"
+          "font": "Nanum Gothic Coding"
         },
         "subtitle": {
           "text": "정부체",
           "color": "#999999",
           "fontSize": 16,
-          "font": "open sans"
+          "font": "Nanum Gothic Coding"
         },
         "titleSubtitlePadding": 9
       },"size": {

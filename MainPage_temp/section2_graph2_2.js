@@ -14,13 +14,13 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         "title": {
           "text": "부서별 정부지원사업 건 수",
           "fontSize": 24,
-          "font": "open sans"
+          "font": "Nanum Gothic Coding"
         },
         "subtitle": {
           "text": "지자체",
           "color": "#999999",
           "fontSize": 16,
-          "font": "open sans"
+          "font": "Nanum Gothic Coding"
         },
         "titleSubtitlePadding": 9
       },"size": {
@@ -30,7 +30,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       },"footer": {
         "color": "#999999",
         "fontSize": 10,
-        "font": "open sans",
+        "font": "Nanum Gothic Coding",
         "location": "bottom-left"
       },
       data: {
@@ -45,6 +45,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       },"tooltips": {
         "enabled": true,
         "type": "placeholder",
+        "fontsize" : 15,
         "string": "{label}: {value}건, {percentage}%"
       },"effects": {
         "pullOutSegmentOnClick": {

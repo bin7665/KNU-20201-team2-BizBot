@@ -1,23 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&family=Noto+Sans+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&family=Nanum+Gothic+Coding:wght@700&family=Noto+Sans+KR:wght@700&display=swap');
 
-header{
-    font-size: 45px;
-    color: #fff;
-    background-color: #D1CC43;    
-    background-image: url('image\banner.png') no-repeat;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
-    line-height: 4rem;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    transition: transform .3s linear;
+html, body{
+    width:100%; height:100%
 }
 
 body{
+    position: relative;
+        top: 50px;
+        left: 0px;
+        right: 0px;
+        bottom: 50px;
+    overflow: auto;
+    overflow-x: hidden;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
@@ -26,42 +20,86 @@ body{
     background-color: #f1f7e0dc;
 }
 
+header{
+    /* background-color: #D1CC43;   */
+    background-image: url('https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/MainPage_temp/image/banner.png');
+    background-repeat: no-repeat;
+    background-size: 100% ;
+    
+    position: relative;
+        top: 0;
+    height: 25%;
+    width: 100%;
+    transition: transform .3s linear;
+    color: black;
+
+    font: 'Nanum Gothic Coding';
+    font-size: 45px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 2rem;
+    line-height: 3rem;
+}
+
 main {
+    display: flex;
+    flex-direction:column;
     width: 75%;
     margin: 3rem auto 0;
     padding-top: 10rem;
 }
 
-footer {
-    margin-top: 60px;
-    width: 100%;
-    line-height: 10rem;
-    background-color: #333325;  
+section{
+    
 }
 
-button {
-    position: relative;
-    left: 700px;
-    top: 50px;
-}
-
-circle{
-    fill: #D1CC43;
-    stroke: #8D880A;
-
+.part{
+    justify-content: flex-start;
 }
 
 .sectionExplain {
-    background-color: rgba(138, 138, 138, 0.377);
-    fill: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    width: 50%;
+    text-align: left;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-left: 0px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    border-radius: 10px;
+}
+
+p{
+    margin-top: 5%;
 }
 
 .subtitle {
-    font-size: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 130%;
+    width: 40%;
+    
+    background-color: rgba(251, 196, 0);
+    
+    padding: 2%;
+    margin-right: 5%;
 }
 
-.graph{
-    font-family: 'Nanum Gothic Coding', monospace;
+.graphBox{
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    resize: both;
+    text-align: center;
+    font-family: 'Sunflower', monospace;
     font-size: 20px;
 }
 
@@ -72,12 +110,42 @@ circle{
     opacity: .5;
 }
 
+
+circle{
+    fill: rgba(255, 205, 0);
+    stroke: rgba(251, 196, 0);
+}
+
+footer {
+    position: relative;
+        left: 0px;
+        bottom: 0px;
+    width: 100%;
+    line-height: 13rem;
+    margin-top: 50px;
+    padding: 60px 0;
+    background-color: #333325;  
+}
+
+button {
+    position: absolute;
+        right: 20px;
+        bottom: 10px;
+    font-size: 12px;
+    background: #3498db;
+    color: #fff;
+    border: 0.25rem solid #3498db;
+    margin: 1rem;
+}
+
+
+/****************************scroll event class************************/
 .visible {
     opacity: 1;
-    transition: opacity .7s ease-in-out;
+    transition: opacity 1s ease;
 }
 
 .invisible {
     opacity: 0;
-    transition: opacity .7s ease-in-out;
+    transition: opacity 1s ease;
 }

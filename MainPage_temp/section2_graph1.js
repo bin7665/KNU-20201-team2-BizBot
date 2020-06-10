@@ -1,16 +1,16 @@
 // set the dimensions and s2g1Margins of the graph
-var s2g1Margin = {top: 10, right: 30, bottom: 30, left: 70},
-    s2g1Width = 700 - s2g1Margin.left - s2g1Margin.right,
+var s2g1Margin = {top: 10, right: 30, bottom: 30, left: 50},
+    s2g1Width = 1000 - s2g1Margin.left - s2g1Margin.right,
     s2g1Height = 400 - s2g1Margin.top - s2g1Margin.bottom;
 
 // append the svg object to the body of the page
 var s2g1Svg = d3.select("#section2_graph1")
   .append("svg")
-    .attr("width", s2g1Width + s2g1Margin.left + s2g1Margin.right+50)
+    .attr("width", s2g1Width + s2g1Margin.left + s2g1Margin.right+200)
     .attr("height", s2g1Height + s2g1Margin.top + s2g1Margin.bottom + 50)
     .append("g")
     .attr("transform",
-          "translate(" + s2g1Margin.left + "," + s2g1Margin.top + ")");
+          "translate(" + (s2g1Margin.left+100) + "," + s2g1Margin.top + ")");
 
 //Read the data
 d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/static/data/inquiry_data.csv",
@@ -65,13 +65,21 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
     // create a tooltip
     var Tooltip = d3.select("#section2_graph1")
       .append("div")
-        .style("opacity", 0)
+        .style("width", "25%")
+        .style("height", "27px")
         .attr("class", "tooltip")
+        .style("opacity", 1)
+        .style("margin-left", "442px")
         .style("background-color", "white")
         .style("border", "solid")
         .style("border-width", "3px")
         .style("border-radius", "5px")
+        .style("border-color", "#D1CC43")
+        .style("color", "black")
+        .style("background-color", "#D1CC43")
         .style("padding", "5px")
+        .html(`점 위에 마우스를 올려보세요!`)
+        
 
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
@@ -89,16 +97,15 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         .style("top", (d3.mouse(this)[1]) + "px")
     }
     var mouseleave = function(d) {
-      Tooltip
-        .style("opacity", 0)
+      
     }
 
     // Add the line
     s2g1Svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "#8D880A")
-      .attr("stroke-width", 1.5)
+      .attr("stroke", "rgba(251, 196, 0)")
+      .attr("stroke-width", 2)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })

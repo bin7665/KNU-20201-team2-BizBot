@@ -1,12 +1,12 @@
 // set the dimensions and s3g1Margins of the graph
-var s3g1Margin = {top: 10, right: 30, bottom: 30, left: 80},
+var s3g1Margin = {top: 10, right: 30, bottom: 10, left: 80},
     s3g1Width = 760 - s3g1Margin.left - s3g1Margin.right,
     s3g1Height = 400 - s3g1Margin.top - s3g1Margin.bottom;
     // append the svg object to the body of the page
     var s3g1Svg = d3.select("#section3_graph1")
       .append("svg")
-        .attr("width", s3g1Width + s3g1Margin.left + s3g1Margin.right+70)
-        .attr("height", s3g1Height + s3g1Margin.top + s3g1Margin.bottom+30)
+        .attr("width", s3g1Width + s3g1Margin.left + s3g1Margin.right+50)
+        .attr("height", s3g1Height + s3g1Margin.top + s3g1Margin.bottom+40)
       .append("g")
         .attr("transform",
               "translate(" + s3g1Margin.left + "," + s3g1Margin.top + ")")   
@@ -37,8 +37,8 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
     var myline = s3g1Svg.append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "black")
-    .attr("stroke-width", 1.5)
+    .attr("stroke", "rgba(251, 196, 0)")
+    .attr("stroke-width", 3)
     .attr("d", d3.line()
         .curve(d3.curveBasis) // Just add that to have a curve instead of segments
         .x(function(d) { return x(d.Period); })
@@ -50,13 +50,13 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         .attr("writing-mode", "vertical-rl")
         .attr("transform", "translate(" + (-50) + "," + (s3g1Height/2) + ")")
         .style("text-anchor", "middle")
-        .style("font-size", 10)
+        .style("font-size", 15)
 
     s3g1Svg.append('text')
         .text("접수기간(일)")
         .attr("transform", "translate(" + s3g1Width / 2 + "," + (s3g1Height+40) + ")")
         .style("text-anchor", "middle")
-        .style("font-size", 10)
+        .style("font-size", 15)
 
     // A function that update the plot for a given xlim value
     function updatePlot() {
