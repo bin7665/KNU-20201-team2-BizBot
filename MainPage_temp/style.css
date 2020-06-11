@@ -146,6 +146,25 @@ p {
   margin-left: 10px;
 }
 
+input{
+  -webkit-appearance: none;
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  cursor: pointer;
+  background: #2497E3;
+}
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid #2497E3;
+  height: 15px;
+  width: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+
 .label {
   font-family: "Sunflower", monospace;
   fill: #fff;

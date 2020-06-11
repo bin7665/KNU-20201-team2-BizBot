@@ -106,7 +106,7 @@ d3.csv(
       var year = Str.substring(1, 5);
       var quarter = Str.substring(5, 6);
       var text = year + "년 " + quarter + "분기";
-      Tooltip.html(`${text}: ${d.value}회`)
+      Tooltip.html(`${text}: 건당 ${d.value}회`)
         .style("left", d3.mouse(this)[0] + 70 + "px")
         .style("top", d3.mouse(this)[1] + "px");
     };

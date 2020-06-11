@@ -80,20 +80,17 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
       topData.push(data[i]);
     }
 
-    var colors = pie.options.colors
+    var colors = pie.options.colors;
 
     s2g2_2Svg.append('g')
       .append("text")
         .attr('x', 60)
         .attr('y', s2g2_2Height-160)
         .text("TOP 5")
-        .style("font-size", 30)
-    
-    console.log(topData)
+        .style("font-size", 30);
 
     // Add a legend (interactive)
-    s2g2_2Svg
-      .selectAll("myLegend")
+    s2g2_2Svg.selectAll("myLegend")
       .data(topData)
       .enter()
         .append('g')

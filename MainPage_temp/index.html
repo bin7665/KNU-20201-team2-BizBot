@@ -124,7 +124,7 @@
           <div class="sectionExplain">
             <ul class="chapterClass">
               <li class="subtitle"><b>= 정부 지원 =</b></li>
-              <li>연,월별 정부지원사업 건 수</li>
+              <li>월별 정부지원사업 건 수</li>
             </ul>
             <p>
               <span
@@ -146,23 +146,21 @@
         <div class="part">
           <div class="sectionExplain">
             <ul class="chapterClass">
-              <li class="subtitle"><b>= 정부지원사업 평균 조회수 =</b></li>
+              <li class="subtitle"><b>= 정부지원사업 조회수 =</b></li>
               <li>지원사업당 평균 조회수</li>
             </ul>
             <p>
-              지원사업에 대한 사람들의 관심도의 변화를 살펴보겠습니다.<br />
+              지원사업 공고에 대한 사람들의 평균 조회수의 변화를 살펴보겠습니다.<br />
               <span
                 style="
                   font: Sunflower;
                   font-size: 25px;
                   color: rgb(212, 173, 29);
-                "
-                >2017년 1분기</span
-              >에 가장 많은 관심을 보인 이래로 계속 하향세를 달리고 있습니다.<br />
-              정부지원사업이 계속 늘어남으로 인해 지원사업당 평균 조회수는
-              감소하고 있습니다.<br />
-              이전보다 지원사업에 대한 경쟁률이 많이 낮아졌다고 생각하면 될 것
-              같습니다.<br />
+                " 
+              >2017년 1분기</span
+              >에 가장 높은 평균조회수를 보인 이래로 점점 하락하는 추세입니다.<br />
+              새 정부에 들어선 이래 정부지원사업 공급이 증가하는데 반해 수요는 감소하여 경쟁률이 낮아지는 추세입니다.<br />
+              많은 지원사업들이 제공되고 있습니다. 여러분도 도전해보세요!<br />
             </p>
           </div>
           <div class="graphBox">
@@ -174,12 +172,12 @@
         <div class="part">
           <div class="sectionExplain">
             <ul class="chapterClass">
-              <li class="subtitle"><b>= 정부지원사업 공고 조회수 =</b></li>
-              <li>년월 분포데이터</li>
+              <li class="subtitle"><b>= 정부지원사업 조회수 =</b></li>
+              <li>연월 분포데이터</li>
             </ul>
             <p>
-              정부지원사업 등록일자 기준으로 좀 더 자세히 살펴봅시다.<br />
-              확실히 2017년 1분기에 점들이 높이 분포하고 있네요.<br />
+              정부지원사업의 공고 등록일자 기준으로 좀 더 자세히 살펴봅시다.<br />
+              확실히 2017년 1분기에 공고별 경쟁률이 가장 높았군요.<br />
               ※
               <span style="font: Sunflower; color: rgb(212, 173, 29);"
                 >하단의 스크롤바</span
@@ -187,9 +185,14 @@
             </p>
           </div>
           <div>
-            <div class="graphBox" id="section3_graph2"></div>
             <p></p>
-            <input type="range" id="buttonylim" />
+            <div class="graphBox" id="section3_graph2" style="display: flex; flex-direction: column;">
+              <svg style="margin-left: 16%;"></svg>
+              <div style="justify-content: center;">
+                <input type="range" id="buttonylim1" style="padding: 0px; margin: 0px; width:30%;"/>
+                <input type="range" id="buttonylim2" style="padding: 0px; margin: 0px; width:30%;"/>  
+              </div>
+            </div>
           </div>
         </div>
         <hr style="border: outset 3px rgba(251, 196, 0);" />

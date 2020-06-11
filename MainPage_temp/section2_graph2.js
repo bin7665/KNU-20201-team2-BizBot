@@ -86,8 +86,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
         .style("font-size", 30)
         
     // Add a legend (interactive)
-    s2g2Svg
-      .selectAll("myLegend")
+    s2g2Svg.selectAll("myLegend")
       .data(topData)
       .enter()
         .append('g')

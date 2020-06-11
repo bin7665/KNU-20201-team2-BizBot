@@ -1,12 +1,12 @@
 // set the dimensions and s3g2Margins of the graph
-var s3g2Margin = {top: 10, right: 0, bottom: 30, left: 80},
+var s3g2Margin = {top: 10, right: 0, bottom: 0, left: 80},
     s3g2Width = 800 - s3g2Margin.left - s3g2Margin.right,
     s3g2Height = 400 - s3g2Margin.top - s3g2Margin.bottom;
     // append the s3g2Svg object to the body of the page
     var s3g2Svg = d3.select("#section3_graph2")
-      .append("svg")
+      .select("svg")
         .attr("width", s3g2Width + s3g2Margin.left + s3g2Margin.right+70)
-        .attr("height", s3g2Height + s3g2Margin.top + s3g2Margin.bottom+40)
+        .attr("height", s3g2Height + s3g2Margin.top + s3g2Margin.bottom+70)
       .append("g")
         .attr("transform", "translate(" + s3g2Margin.left + "," + s3g2Margin.top + ")")
 
@@ -32,7 +32,7 @@ function(data) {
     .attr("transform", "translate(0," + s3g2Height + ")")
     .call(d3.axisBottom(x))
     .attr("opacity", "0")
-
+  
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([0, 30000])//d3.max(data, function(d) { return +d.value; })
@@ -59,7 +59,7 @@ function(data) {
 
   s3g2Svg.append('text')
       .text("등록일자")
-      .attr("transform", "translate(" + (s3g1Width / 2+20) + "," + (s3g1Height+40) + ")")
+      .attr("transform", "translate(" + (s3g1Width / 2+20) + "," + (s3g1Height+60) + ")")
       .style("text-anchor", "middle")
       .style("font-size", 15)
 
@@ -82,31 +82,62 @@ function(data) {
     .attr("cx", function (d) { return x(d.date); } )
     .attr("cy", function (d) { return y(d.value); } )
 
-    // A function that update the plot for a given xlim value
-  function updatePlot() {
-    
-    // Get the value of the button
-    ylim = this.value
-
-    // Update X axis
-    x.domain([Number(new Date("January 1, 2015 00:00:00")),ylim])
-    s3g2xAxis.transition().duration(1000).call(d3.axisBottom(x))
-
-    // Update chart
-    s3g2Svg.selectAll("circle")
-      .transition()
-      .delay(function(d,i){return(i)})
-      .duration(100)
-      .attr("cx", function (d) { return x(d.date); } )
-      .attr("cy", function (d) { return y(d.value); } )
-  }
-
   var V = d3.max(data, function(d) {return Number(d.date)})
-  // Add an event listener to the button created in the html part
-  d3.select("#buttonylim")
+  var M = d3.min(data, function(d) {return Number(d.date)})
+  var minxd = M,
+    maxxd = V;
+
+  d3.select("#buttonylim1")
+    .attr("max", Number(new Date("May 31, 2017 00:00:00")))
+    .attr("value", M)
+    .attr("min", M)
+    .attr("step", (Number(new Date("May 31, 2017 00:00:00"))-M)/100)
+    .style("padding", "0px")
+    .style("margin", "0px")
+    .on("input", updatePlot1 )
+
+  d3.select("#buttonylim2")
     .attr("max", V)
     .attr("value", V)
-    .attr("min", Number(new Date("January 1, 2016 00:00:00")))
-    .attr("step", V/100)
-    .on("input", updatePlot )
+    .attr("min", Number(new Date("June 1, 2017 00:00:00")))
+    .attr("step", (V-Number(new Date("June 1, 2017 00:00:00")))/100)
+    .style("padding", "0px")
+    .style("margin", "0px")
+    .on("input", updatePlot2 )
+
+      // A function that update the plot for a given xlim value
+      function updatePlot1() {
+        // Get the value of the button
+        ylim = this.value
+        minxd = ylim;
+        // Update X axis
+        x.domain([ylim,maxxd])
+        s3g2xAxis.transition().duration(1000).call(d3.axisBottom(x))
+        // Update chart
+        s3g2Svg.selectAll("circle")
+          .transition()
+          .delay(function(d,i){return(i)})
+          .duration(100)
+          .attr("cx", function (d) { return x(d.date); } )
+          .attr("cy", function (d) { return y(d.value); } )
+      }
+
+      // A function that update the plot for a given xlim value
+      function updatePlot2() {
+    
+        // Get the value of the button
+        ylim = this.value;
+        maxxd = ylim;
+        // Update X axis
+        x.domain([minxd, ylim])
+        s3g2xAxis.transition().duration(1000).call(d3.axisBottom(x))
+    
+        // Update chart
+        s3g2Svg.selectAll("circle")
+          .transition()
+          .delay(function(d,i){return(i)})
+          .duration(100)
+          .attr("cx", function (d) { return x(d.date); } )
+          .attr("cy", function (d) { return y(d.value); } )
+      }
 })

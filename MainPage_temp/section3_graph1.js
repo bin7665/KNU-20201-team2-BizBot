@@ -54,7 +54,7 @@ d3.csv("https://raw.githubusercontent.com/bin7665/KNU-20201-team2-BizBot/master/
 
     s3g1Svg.append('text')
         .text("접수기간(일)")
-        .attr("transform", "translate(" + s3g1Width / 2 + "," + (s3g1Height+40) + ")")
+        .attr("transform", "translate(" + (s3g1Width / 2) + "," + (s3g1Height+40) + ")")
         .style("text-anchor", "middle")
         .style("font-size", 15)
 
