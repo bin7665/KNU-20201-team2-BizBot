@@ -1,17 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     var trigger = new ScrollTrigger({
-//         offset: {
-//             x: 0,
-//             y: 200
-//         },
-//         toggle: {
-//             visible: 'visible',
-//             hidden: 'invisible'
-//         },
-//         once: true,
-//     });
-// });
-
 var chapter = new Array();
     chapter[0] = document.querySelector("#chapter1");
     chapter[1] = document.querySelector("#chapter2");
@@ -77,11 +63,3 @@ function scrollToChapter(ev){//var scrollInterval = setInterval(function(){
 
     }
 }
-
-// chapterTop[0] = 404;
-// chapterTop[1] = 725;
-// chapterTop[2] = 2924;
-// chapterTop[3] = 4304;
-// chapterTop[4] = 5704;
-// chapterTop[5] = 6464;
-// chapterTop[6] = 7240;
