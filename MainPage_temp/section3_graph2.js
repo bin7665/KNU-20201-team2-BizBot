@@ -49,7 +49,6 @@ function(data) {
       .attr("cx", function (d) { return x(d.date); } )
       .attr("cy", function (d) { return y(d.value); } )
       .attr("r", 1.5)
-      .style("fill", "#69b3a2")
 
   s3g2Svg.append('text')
     .text("조회수")
