@@ -197,7 +197,7 @@ def draw_all_chart(selectedData, value):
         selectedData + '.png'
 
     return (selectedData + ' 지역', '정부지원사업 ' + pie_charts[value]['name'], get_pie_chart(selectedData, pie_projects[selectedData][value]),
-            selectedData + '지역', img_src, selectedData + '지역', get_scatter_chart(selectedData, scatter_projects[selectedData]))
+            selectedData + ' 지역', img_src, selectedData + ' 지역', get_scatter_chart(selectedData, scatter_projects[selectedData]))
 
 
 @app.callback(
