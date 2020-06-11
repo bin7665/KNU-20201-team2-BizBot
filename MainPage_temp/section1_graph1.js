@@ -17,9 +17,9 @@ var s1g1Force = d3.forceSimulation()
     .force("y", forceY)
     .force("collide", d3.forceCollide().radius(function(d){
         if(d === root){
-            return Math.random() * 50;
+            return Math.random() * 50+30;
         }
-        return d.r + 0.3;
+        return d.r + 0.2;
     }).iterations(3))
     .nodes(nodes).on("tick", ticked);
 

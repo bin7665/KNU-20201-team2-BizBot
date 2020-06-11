@@ -1,5 +1,5 @@
 // set the dimensions and s1g3Margins of the graph
-var s1g3Margin = {top: 10, right: 30, bottom: 40, left: 70},
+var s1g3Margin = {top: 10, right: 100, bottom: 40, left: 70},
     s1g3Width = 1500 - s1g3Margin.left - s1g3Margin.right,
     s1g3Height = 460 - s1g3Margin.top - s1g3Margin.bottom;
 
@@ -50,7 +50,7 @@ s1g3Svg.append('text')
   .attr("writing-mode", "vertical-rl")
   .attr("transform", "translate(" + (-50) + "," + (s1g3Height/2) + ")")
   .style("text-anchor", "middle")
-  .style("font-size", 10)
+  .style("font-size", 15)
 
 // Lines
 s1g3Svg.selectAll("myline")

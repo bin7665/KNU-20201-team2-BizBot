@@ -59,11 +59,11 @@ main {
 
 .remote{
     padding: 0px;  margin: 0px;
-    padding-top: 25px;
+    padding-top: 30px;
     list-style: none;
     position: fixed;
-        right: 10px;
-        top: 50%;
+        right: 60px;
+        top: 35%;
     width: 65px;
     height: 260px;
     z-index: 1;

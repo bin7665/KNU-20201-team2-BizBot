@@ -6,16 +6,14 @@ var chapter = new Array();
     chapter[4] = document.querySelector("#chapter5");
     chapter[5] = document.querySelector("#chapter6");
 
-console.log()
-
 var chapterTop= new Array();
     chapterTop[0] = 404;
     chapterTop[1] = 775;
     chapterTop[2] = 2924;
-    chapterTop[3] = 4514;
-    chapterTop[4] = 6019;
-    chapterTop[5] = 6814;
-    chapterTop[6] = 7480;
+    chapterTop[3] = 4534;
+    chapterTop[4] = 6239;
+    chapterTop[5] = 7034;
+    chapterTop[6] = 7600;
 
 var remote = document.querySelector(".remote"),
     docElem = document.documentElement,
@@ -31,8 +29,14 @@ if(docHeight!='undefined'){
 
 //scroll event
 window.addEventListener('scroll', function(){
-    scrollPos = docElem.scrollTop;
+    scrollPos = docElem.scrollTop
+    //determine classList
+    determineClass(scrollPos)
+    //move scroll quick menu
+    // moveScrollQuickMenu(scrollPos)
+});
 
+function determineClass(scrollPos) {
     for(var i=0; i<6; i++){
         if( scrollPos >=chapterTop[i] && scrollPos < chapterTop[i+1]){
             chapter[i].classList.add('visible');
@@ -43,7 +47,7 @@ window.addEventListener('scroll', function(){
             chapter[i].classList.remove('visible');
         }
     }
-});
+}
 
 remote.addEventListener('click', function(ev){
     ev.preventDefault();
