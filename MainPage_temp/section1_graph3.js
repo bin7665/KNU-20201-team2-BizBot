@@ -83,4 +83,31 @@ s1g3Svg.selectAll("line")
   .duration(2000)
   .attr("y1", function(d) { return y(d.Value); })
 
+  window.addEventListener('scroll', function(d){
+    update();
+  });
+
+  function update(){
+      // Change the X coordinates of line and circle
+    if(chapter2.classList.contains('visible')){
+      s1g3Svg.selectAll("circle")
+      .transition()
+      .duration(2000)
+      .attr("cy", function(d) { return y(d.Value); })
+
+      s1g3Svg.selectAll("line")
+      .transition()
+      .duration(2000)
+      .attr("y1", function(d) { return y(d.Value); })
+    } else {
+      s1g3Svg.selectAll("circle")
+      .transition()
+      .attr("cy", function(d) { return y(0); })
+
+      s1g3Svg.selectAll("line")
+      .transition()
+      .attr("y1", function(d) { return y(0); })
+    }
+  }
+
 })

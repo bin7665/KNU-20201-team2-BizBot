@@ -42,6 +42,7 @@ header{
     margin: 0px;
     padding: 2rem;
     line-height: 3rem;
+    white-space : nowrap;
 }
 
 main {
@@ -52,21 +53,45 @@ main {
     padding-top: 3rem;
 }
 
-section{
-    
-}
-
 .part{
     justify-content: flex-start;
 }
 
-.sectionExplain {
-    padding: 10px;
-    width: 50%;
-    text-align: left;
-}
+.remote{
+    padding: 0px;  margin: 0px;
+    padding-top: 25px;
+    list-style: none;
+    position: fixed;
+        right: 10px;
+        top: 50%;
+    width: 65px;
+    height: 260px;
+    z-index: 1;
 
-ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: stretch;
+    align-items: center;
+
+    background-color: #fff;
+    font-family: Sunflower;
+    font-style: border;
+    font-size: 10%;
+    border-radius: 10px;
+    border: 0.25rem outset ;
+    border-color: rgba(251, 196, 0);
+    transition-delay: 1s;
+}
+.inremote{
+    padding-bottom: 10px; margin: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 0.25rem ridge;
+    border-color: rgba(251, 196, 0);
+}
+.chapterClass{
     list-style: none;
     display: flex;
     align-items: flex-end;
@@ -77,20 +102,25 @@ ul{
     border-radius: 10px;
 }
 
-p{
-    margin-top: 5%;
+.sectionExplain {
+    white-space : nowrap;
+    padding: 10px;
+    width: 50%;
+    text-align: left;
 }
-
 .subtitle {
     border-radius: 10px;
     text-align: center;
     font-size: 130%;
-    width: 40%;
-    
+    width: 280px;
+    line-height: 1.6;
     background-color: rgba(251, 196, 0);
     
     padding: 2%;
     margin-right: 5%;
+}
+p{
+    margin-top: 5%;
 }
 
 .graphBox{
@@ -104,6 +134,7 @@ p{
 }
 
 .label{
+    font-family: 'Sunflower', monospace;
     fill: #fff;
     stroke: #bbb;
     stroke-width: .5px;
@@ -127,25 +158,18 @@ footer {
     background-color: #333325;  
 }
 
-button {
+.buttonDiv {
     position: absolute;
         right: 20px;
-        bottom: 10px;
+        bottom: 0px;
+    display: flex;
+    justify-content: flex-end;
+}
+button{
     font-size: 12px;
-    background: #3498db;
-    color: #fff;
-    border: 0.25rem solid #3498db;
+    border: 0.25rem solid;
     margin: 1rem;
 }
-
-
-/****************************scroll event class************************/
-.visible {
-    opacity: 1;
-    transition: opacity 1s ease;
-}
-
-.invisible {
-    opacity: 0;
-    transition: opacity 1s ease;
-}
+#leftB{background-color: #3498db; border-color: #3498db; color: #fff;}
+#midB{background-color: #fbc400; border-color: #fbc400;}
+#rightB{background-color: #299a1f; border-color: #299a1f; color: #fff;}

@@ -6,7 +6,15 @@
         <link rel = "stylesheet" href="style.css" />
     </head>
 
-    <body class="scrolltriger">
+    <body><!-- class="scrolltriger" -->
+        
+        <style type="text/css">
+            a:link {text-decoration: none; color: #333333;}
+            a:visited {text-decoration: none; color: #333333;}
+            a:active {text-decoration: none; color: #333333;}
+            a:hover {text-decoration: none; color: #333333; text-shadow: 0 0 24px;}
+        </style>
+
         <header>
             <div id = "banner">
                 <h2>BizBot data로 돌아보는 정부지원사업</h2>
@@ -14,26 +22,40 @@
             </div>
         </header>
 
+        <nav>
+            <ul class = "remote">
+                <li class = "inremote"><a id="0" href = "#chapter1">정부지원사업?</a></li>
+                <li class = "inremote"><a id="1" href = "#chapter2">정 부 지 원</a></li>
+                <li class = "inremote"><a id="2" href = "#chapter3">정부지원사업<br>공고 조회수</a></li>
+                <li class = "inremote"><a id="3" href = "#chapter4">부 서 별<br>정부지원사업</a></li>
+                <li class = "inremote"><a id="4" href = "#chapter5">핵심지원사업<br>워드클라우드</a></li>
+                <li class = "inremote" style="border-bottom: none"><a id="5" href = "#chapter6">정부지원사업<br>접수기간</a></li>
+            </ul>
+        </nav>
+
         <main>
-            <section data-scroll>
+            <section id = "chapter1"> <!-- data-scroll -->
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul class = "chapterClass">
                            <li class="subtitle"><b>= 정부지원사업이란? =</b></li>
                            <li></li>
                         </ul>
-                        <p>정부지원사업이란 좋은 아이디어와 제품이 있는 창업자, 스타트업의 창업 촉진 및 일자리 창출, 기업의 발전을 위해 창업자에게 지원하는 창업교육, 창업시설 및 공간 등 다양한 분야에서 기술개발이나 창업에 필요한 비용을 지원해주는 정책입니다.<br>
-                            정부지원금은 무상으로 지원되며<br><em>(단, 환수의 경우는 제외되며, 지원형태에 따라 10~50%의 자기부담금이 생길 수 있습니다)</em><br>
+                        <p>정부지원사업이란 좋은 아이디어와 제품이 있는 창업자, 스타트업의 창업 촉진 및 일자리 창출,<br> 기업의 발전을 위해 창업자에게 지원하는 창업교육, 창업시설 및 공간 등 다양한 분야에서<br>기술개발이나 창업에 필요한 비용을 지원해주는 정책입니다.<br>
+                            정부지원금은 무상으로 지원되며<br><span style="font-style: italic; color: rgb(255, 106, 106)">(단, 환수의 경우는 제외되며, 지원형태에 따라 10~50%의 자기부담금이 생길 수 있습니다)</span><br>
                             사업계획서만 잘 작성된다면 누구나 도전할 수 있습니다.<br>
-                            어떻게 시작해야할지 모르겠다면 저희 <span style="font: Sunflower; font-size: 35px; color:rgb(212, 173, 29)">BizBot</span>사이트에서 정보를 얻어가세요!
+                            어떻게 시작해야할지 모르겠다면 저희 <span style="font: Sunflower; font-size: 35px; color:#3498db">BizBot</span>사이트에서 정보를 얻어가세요!
                         </p>
                     </div>
                 </div>
                 <hr style="border: outset 3px rgba(251, 196, 0);">
+            </section>
+
+            <section id = "chapter2">
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
-                           <li class="subtitle"><b>= 정부의 지원 =</b></li>
+                        <ul class = "chapterClass">
+                           <li class="subtitle"><b>= 정부 지원 =</b></li>
                            <li></li>
                         </ul>
                         <p>2015년 ~ 2019년 5년동안 정부지원사업은 <span style="font: Sunflower; font-size: 35px; color:rgb(212, 173, 29)">34042</span>건이 있었습니다.</p>
@@ -43,8 +65,8 @@
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
-                            <li class="subtitle"><b>= 정부의 지원 =</b></li>
+                        <ul class = "chapterClass">
+                            <li class="subtitle"><b>= 정부 지원 =</b></li>
                             <li>연도별 정부지원사업 건 수</li>
                         </ul>
                         <p>현 정부는 기존 중소기업청을 부로 승격한 중소벤처기업부를 통해<br> 지원사업을 관장하고 있으며, 매년 꾸준히 증가하는 추세를 보이고 있습니다.</p>
@@ -54,27 +76,27 @@
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
-                            <li class="subtitle"><b>= 정부의 지원 =</b></li>
+                        <ul class = "chapterClass">
+                            <li class="subtitle"><b>= 정부 지원 =</b></li>
                             <li>연,월별 정부지원사업 건 수</li>
                         </ul>
-                        <p>매년 초에 많은 지원 공고가 있으니 잘 확인해보는게 좋겠습니다.</p>
+                        <p><span style="font: Sunflower; font-size: 25px; color:rgb(212, 173, 29)">매년 초</span>에 많은 지원 공고가 있으니 잘 확인해보는게 좋겠습니다.</p>
                     </div>
                     <div class = "graphBox" id = "section1_graph3"></div>
                     = <hr style="border: outset 3px rgba(251, 196, 0);">
                 </div>
             </section>
             
-            <section data-scroll> 
+            <section id = "chapter3"> <!-- data-scroll -->
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul class = "chapterClass">
                             <li class="subtitle"><b>= 정부지원사업 공고 조회수 =</b></li>
                             <li>분기별데이터</li>
                         </ul>
                         <p>지원 사업에 대한 사람들의 관심도의 변화를 살펴보겠습니다.<br>
-                        2017년 1분기에 가장 많은 관심을 보인 이래로 계속 하향세를 달리고 있습니다.<br>
-                        정부지원사업은 계속 늘어나는 추세인데 반해 관심은 계속 줄어들고 있습니다.</p>
+                            <span style="font: Sunflower; font-size: 25px; color:rgb(212, 173, 29)">2017년 1분기</span>에 가장 많은 관심을 보인 이래로 계속 하향세를 달리고 있습니다.<br>
+                        정부지원사업은 계속 늘어나는 추세인데 반해 관심은 줄어들고 있습니다.</p>
                     </div>
                     <div class = "graphBox">
                         <div id="section2_graph1"></div>
@@ -84,12 +106,13 @@
 
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul class = "chapterClass">
                             <li class="subtitle"><b>= 정부지원사업 공고 조회수 =</b></li>
                             <li>년월 분포데이터</li>
                         </ul>
                         <p>정부지원사업 등록일자 기준으로 좀 더 자세히 살펴봅시다.<br>
-                            ※ 하단의 스크롤바를 이용해 더 자세히 살펴보세요!<br></p>
+                            확실히 2017년 1분기에 점들이 높이 분포하고 있네요.<br>
+                            ※ <span style="font: Sunflower; color:rgb(212, 173, 29)">하단의 스크롤바</span>를 이용해 더 자세히 살펴보세요!<br></p>
                     </div>
                     <div>
                         <div class = "graphBox" id="section3_graph2"></div>
@@ -99,14 +122,15 @@
                 </div>
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
             </section>
-            <section data-scroll>
+
+            <section id = "chapter4"> <!-- data-scroll -->
                 <div class = "part"> 
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul class = "chapterClass">
                             <li class="subtitle"><b>= 부서별 정부지원사업 =</b></li>
                             <li>정부,지자체</li>
                         </ul>
-                        <p>정부지원사업은 여러 정부체, 지자체에서 운영됩니다.<br>
+                        <p>정부지원사업은 중소벤처기업부 뿐 아니라 여러 정부체, 지자체에서 운영됩니다.<br>
                         다양한 곳에서 다양한 지원을 받아보세요!</p>
                     </div>
                     <div class = "graphBox">
@@ -117,7 +141,7 @@
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul class = "chapterClass">
                             <li class="subtitle"><b>= 부서별 정부지원사업 =</b></li>
                             <li>사업분야</li>
                         </ul>
@@ -128,10 +152,10 @@
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
             </section>
 
-            <section data-scroll>
+            <section id = "chapter5"> <!-- data-scroll -->
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul class = "chapterClass">
                             <li class="subtitle"><b>= 핵심 지원사업 워드클라우드 =</b></li>
                             <li></li>
                         </ul>
@@ -145,15 +169,15 @@
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
             </section>
 
-            <section data-scroll>
+            <section id = "chapter6"> <!-- data-scroll -->
                 <div class = "part">
                     <div class = "sectionExplain">
-                        <ul>
+                        <ul  class = "chapterClass">
                             <li class="subtitle"><b>= 정부지원사업 접수기간 =</b></li>
                             <li></li>
                         </ul>
                         <p>마지막으로 정부지원사업들의 접수 기간은 얼마나 되는지 알아보겠습니다.<br>
-                        접수 기간은 두 달을 넘기지 않는 것이 대부분이며 거의 2주(약 14일)의 기간에 많이 분포합니다.<br>
+                        접수 기간은 두 달을 넘기지 않는 것이 대부분이며 거의 <span style="font: Sunflower; font-size: 25px; color:rgb(212, 173, 29)">2주(약 14일)</span>의 기간에 공고됩니다.<br>
                         항상 정부지원사업에 관심을 갖고 지켜보는 게 좋을 것 같습니다.</p>
                     </div>
                     <div class = "graphBox">
@@ -166,20 +190,25 @@
                 </div>
                 = <hr style="border: outset 3px rgba(251, 196, 0);">
                 <p class = "sectionExplain">정부지원사업은 갈 수록 늘어나는 추세인데 반해 사람들의 관심은 점점 줄어들고 있습니다.<br>
-                     공고 기간이 그리 길지 않으므로 BizBot을 통한 많은 관심과 홍보 부탁드립니다.<br> <strong>감사합니다</strong>.</p>
+                     공고 기간이 그리 길지 않으므로 <span style="font: Sunflower; font-size: 25px; color:#3498db">BizBot</span>을 통해 쉽고 빠르게 정부지원사업에 관한 정보를 얻으세요! <br>
+                     많은 관심 부탁드립니다.<br> 감사합니다.</p>
             </section>
         </main>
 
         <footer>
-            <button onclick = "window.open('http://naver.com')">비즈봇 카카오페이지 바로가기 →</button>
+            <div class = "buttonDiv">
+                <button id = "leftB" onclick = "window.open('http://naver.com')">페르소나 홈페이지 →</button>
+                <button id = "midB" onclick = "window.open('http://naver.com')">BizBot 카카오톡 채널 →</button>
+                <button id = "rightB" onclick = "window.open('http://naver.com')">네이버 블로그 →</button>
+            </div>
         </footer>
 
         <!-- script files -->
             <!-- Load d3.js -->
             <script src="https://d3js.org/d3.v4.js"></script>
             <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-            <script src="d3pie.js"></script>
-            <script src="d3.min.js"></script>
+            <script src="d3pie.min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
 
             <!-- Color scale -->
             <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>

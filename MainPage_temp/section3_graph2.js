@@ -1,5 +1,5 @@
 // set the dimensions and s3g2Margins of the graph
-var s3g2Margin = {top: 10, right: 30, bottom: 30, left: 80},
+var s3g2Margin = {top: 10, right: 0, bottom: 30, left: 80},
     s3g2Width = 800 - s3g2Margin.left - s3g2Margin.right,
     s3g2Height = 400 - s3g2Margin.top - s3g2Margin.bottom;
     // append the s3g2Svg object to the body of the page
