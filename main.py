@@ -69,7 +69,7 @@ projects = pd.DataFrame(
     df, columns=['제목', '내용', '지역', '지원분야대', '지원기간', '기업형태', '업종', '조회수', '등록일자', '접수기관_담당부서'])
 projects['등록일자'] = projects['등록일자'].str[:10]
 projects['내용'] = projects['내용'].str.replace('<p style="margin: 0px">', '').str.replace(     # remove and replace html tags
-    '&nbsp;', ' ').str.replace('R&amp;D', 'R&D').str.replace('<div>', '').str.replace('?', ' ').str[:20] + '...'
+    '&nbsp;', ' ').str.replace('&amp;', '&').str.replace('<div>', '').str.replace('?', ' ').str[:20] + '...'
 # to extract local dataframe, because str.len() == 50 contains all locals
 projects_coun = projects[projects['지역'].str.len() != 50].copy()
 country_projects = {}
