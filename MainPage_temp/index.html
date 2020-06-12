@@ -189,27 +189,30 @@
           </div>
           <div>
             <p></p>
-            <div
-              class="graphBox"
-              id="section3_graph2"
-              style="display: flex; flex-direction: column;"
-            >
-              <svg style="margin-left: 16%;"></svg>
-              <div style="justify-content: center;">
-                <input
-                  type="range"
-                  id="buttonylim1"
-                  style="padding: 0px; margin: 0px; width: 30%;"
-                />
-                <input
-                  type="range"
-                  id="buttonylim2"
-                  style="padding: 0px; margin: 0px; width: 30%;"
-                />
+            <div class="graphBox" id="section3_graph2">
+              <div>
+                <svg></svg>
+                <div style="display: flex; justify-content: center;" style="padding: 0px; margin: 0px;">
+                  <div style="padding: 0px; margin: 0px; display: flex; flex-direction: column; width: 40%;">
+                    <input type="range" id="buttonylim1" style="padding: 0px; margin: 0px; justify-content: center;" list = "preyear"/>
+                    <datalist id="preyear">
+                      <option value="Number(new Date("January 1, 2015 00:00:00"))" label="2015">
+                      <option value="Number(new Date("January 1, 2016 00:00:00"))" label="2016">
+                      <option value="Number(new Date("January 1, 2017 00:00:00"))" label="2017">
+                    </datalist>
+                  </div>
+                  <div style="padding: 0px; margin: 0px; display: flex; flex-direction: column; width: 40%;">
+                    <input type="range" id="buttonylim2" style="padding: 0px; margin: 0px; justify-content: center;" list = "postyear"/>  
+                    <datalist id="postyear">  
+                      <option value="Number(new Date("January 1, 2018 00:00:00"))" label="2018">
+                      <option value="Number(new Date("January 1, 2019 00:00:00"))" label="2019">
+                      <option value="Number(new Date("January 1, 2020 00:00:00"))" label="2020">
+                    </datalist>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         <hr style="border: outset 3px rgba(251, 196, 0);" />
       </section>
 

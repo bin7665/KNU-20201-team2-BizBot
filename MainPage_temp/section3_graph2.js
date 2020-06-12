@@ -59,7 +59,7 @@ function(data) {
 
   s3g2Svg.append('text')
       .text("등록일자")
-      .attr("transform", "translate(" + (s3g1Width / 2+20) + "," + (s3g1Height+60) + ")")
+      .attr("transform", "translate(" + (s3g1Width / 2+30) + "," + (s3g1Height+60) + ")")
       .style("text-anchor", "middle")
       .style("font-size", 15)
 
